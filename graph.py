@@ -36,7 +36,7 @@ class Graph:
     def get_vertex(self, key: str):
         """return the vertex if it exists"""
 
-        return key in self.vert_dict.keys()
+        return self.vert_dict[key]
 
     def add_edge(self, vertex_a: str, vertex_b: str, weight=0):
         """

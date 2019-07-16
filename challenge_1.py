@@ -1,31 +1,35 @@
-from read_data import read_file
+from read_data import graph_from_file, string_to_tuple
 from vertex import Vertex
 from graph import Graph
 
 def challenge_1():
-     # Challenge 1: Create the graph
-
-     vertex = list()
-     weight = list()
+    g_type, verticies, edges_str = graph_from_file("graph_data.txt")
+    
+    # creating edge_list iterable 
+    edge_list = list()
+    for edge in edges_str:
+        edge_list.append(string_to_tuple(edge))
 
     graph = Graph()
 
-    # Add your friends
-    graph.add_vertex("Friend 1")
-    graph.add_vertex("Friend 2")
-    graph.add_vertex("Friend 3")
+    # add verticies
+    for vertex in verticies:
+        graph.add_vertex(vertex)
+    
+    # add edges and weights
+    for tuple_ in edge_list:
+        graph.add_edge(tuple_[0], tuple_[1], int(tuple_[2]))
+    
+    # print vertices
+    print(f"Verticles: {len(graph.get_vertices())}")
+    
+    # print edges
+    print(f"Edges: {graph.num_edges}")
+   
+    # print edge list
+    for vertex in graph.vert_dict:
+        vert = graph.get_vertex(vertex) 
+        for neighbour, weight in vert.adj_dict_neighbours.items():
+            print(f"({vert.id}, {neighbour.id}, {weight})")
 
-    # ...  add all 10 including you ...
-
-    # Add connections (non weighted edges for now)
-    g.add_edge("Friend 1", "Friend 2")
-    g.add_edge("Friend 2", "Friend 3")
-
-    # Challenge 1: Output the vertices & edges
-    # Print vertices
-    print("The vertices are: ", g.get_vertices(), "\n")
-
-    print("The edges are: ")
-    for v in g:
-        for w in v.get_neighbors():
-            print("( %s , %s )" % (v.get_id(), w.get_id()))
+challenge_1()

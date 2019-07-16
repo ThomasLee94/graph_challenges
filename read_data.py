@@ -1,10 +1,17 @@
-def read_file(file_name):
+def graph_from_file(filepath):
 
-    with open(file_name, "r") as opened_file:
-        
-        text = opened_file.read()
-        split_text = text.split("\n")
-        
-        data = split_text[0], split_text[1].split(","), split_text[2:]
+    with open(filepath) as f:
+        lines = f.read().splitlines()
+        g_type, vertices, edges = lines[0], lines[1].split(','), lines[2:]
 
-    return data
+        return g_type, vertices, edges
+
+
+def string_to_tuple(string):
+    # Remove front and back parenthesis:
+    string = string[1:-1]
+
+    # Split by commas:
+    elements = string.split(',')
+
+    return tuple(elements)
