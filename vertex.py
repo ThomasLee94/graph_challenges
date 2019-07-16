@@ -26,10 +26,3 @@ class Vertex(object):
         """returns all vertices (nodes) connected to this vertex (node)"""
 
         return self.adj_dict_neighbours
-
-    def get_edge_weight(self, vertex: str) -> int:
-        """return the weight of this edge"""
-        
-        for tuple_ in self.adj_dict_neighbours:
-            if tuple_[0] == vertex:
-                return tuple_[1] 
