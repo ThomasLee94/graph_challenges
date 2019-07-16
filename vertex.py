@@ -22,7 +22,7 @@ class Vertex(object):
             # if vertex does not exist, append tuple
             self.adj_dict_neighbours[vertex] = weight
 
-    def get_neighbors(self) -> [tuple]:
+    def get_neighbors(self) -> dict:
         """returns all vertices (nodes) connected to this vertex (node)"""
 
         return self.adj_dict_neighbours

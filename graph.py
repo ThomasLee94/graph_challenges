@@ -16,7 +16,6 @@ class Graph:
         # }
 
         self.vert_dict = {}
-        self.vert_weight = {}
         self.num_vertices = 0
         self.num_edges = 0
 

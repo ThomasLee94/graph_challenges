@@ -7,17 +7,22 @@ import unittest
 class GraphTest(unittest.TestCase):
 
     def test_init(self):
-        ll = LinkedList()
-        assert ll.head is None
-        assert ll.tail is None
-        assert ll.size == 0
+        graph = Graph()
+        assert len(graph.vert_dict) == 0 
+        assert graph.num_vertices == 0
+        assert graph.num_edges == 0
 
-    def test_init_with_list(self):
-        ll = LinkedList(['A', 'B', 'C'])
-        assert ll.head.data == 'A'  # first item
-        assert ll.tail.data == 'C'  # last item
-        assert ll.size == 3
+    def test_add_vertex(self):
+        vertex_a = "A"
+        graph = Graph()
+        graph.add_vertex(vertex_a)
+        assert len(graph.vert_dict) == 1
+        vertex_b = "B"
+        graph.add_vertex(vertex_b)
+        assert len(graph.add_vertex) == 2
+        
 
+        
     def test_items(self):
         ll = LinkedList()
         assert ll.items() == []
