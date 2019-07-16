@@ -3,7 +3,7 @@ from vertex import Vertex
 from graph import Graph
 
 def challenge_1():
-    g_type, verticies, edges_str = graph_from_file("graph_data.txt")
+    _, verticies, edges_str = graph_from_file("graph_data.txt")
     
     # creating edge_list iterable 
     edge_list = list()

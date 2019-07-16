@@ -1,6 +1,5 @@
 #!python
 
-from graph import Graph
 from vertex import Vertex
 import unittest
 
@@ -20,7 +19,11 @@ class VertexTest(unittest.TestCase):
         vertex_a_obj = Vertex(vertex_a)
         vertex_b_obj = Vertex(vertex_b)
         vertex_a_obj.add_neighbor(vertex_b_obj, weight)
-        
-        
+        assert len(vertex_a_obj.adj_dict_neighbours) == 1
+        assert vertex_a_obj.adj_dict_neighbours[vertex_b_obj] == weight
+
+    def test_get_neighbours(self):
+        # 
+
 if __name__ == '__main__':
     unittest.main()
