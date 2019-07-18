@@ -1,6 +1,10 @@
 ## To run challenges
 
 ```
+cd <CHALLENGE_DIR>
+```
+
+```
 python3 <CHALLENGE_NUM>.py
 ```
 
