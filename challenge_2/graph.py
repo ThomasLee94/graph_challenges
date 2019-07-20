@@ -2,6 +2,7 @@
 
 # essential facts and functionalities of graphs 
 
+from queue import LinkedQueue
 from vertex import Vertex
 
 class Graph:
@@ -74,7 +75,7 @@ class Graph:
                 vertex_key: single str, first iteration of recursive call stack. 
                             Treat as root node, will only be inputted once.
             Returns:
-                 
+
         """
 
         if n < 1:
