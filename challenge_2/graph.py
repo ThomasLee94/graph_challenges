@@ -64,3 +64,51 @@ class Graph:
         """return all the vertices in the graph"""
         return self.vert_dict.keys()
     
+    def breadth_first_search(self, vertex_key: str)-> object:
+
+        """
+            Creates a object with all lengths mapped to vertex_key and returns object
+            containing shortest path with verticies.
+
+            Args:
+                vertex_key: single str, first iteration of recursive call stack. 
+                            Treat as root node, will only be inputted once.
+            Returns:
+                 
+        """
+
+        if n < 1:
+            return [vertex_key]
+
+        # check if vertex exists in graph
+        if vertex_key not in self.vert_dict:
+            raise ValueError("This vertex is not in graph!")
+
+        # Queue to keep track of verticies
+        queue = LinkedQueue()
+        # keeping track of visits
+        visited = set()
+        # keeping track of distance between child and parent verticies
+        distance = {
+            vertex_key: 0
+        }
+        
+        queue.enqueue(vertex_key)
+        visited.add(vertex_key)
+
+        while not queue.is_empty():
+            # Dequeue front vertex
+            vertex = queue.dequeue()
+
+            for neighbour in self.vert_dict[vertex].neighbours:
+                if neighbour.id not in visited:
+                    # adding str's, not objects
+                    queue.enqueue(neighbour.id)
+                    visited.add(neighbour.id)
+                    # adding distance
+                    distance[neighbour.id] = 1 + distance[vertex]
+        # returned a filtered list from distance dict of values == n
+        func = lambda vertex_key: distance[vertex_key] == n 
+        start_list = distance.keys()
+        return list(filter(func, start_list))  
+    
