@@ -78,9 +78,6 @@ class Graph:
 
         """
 
-        if n < 1:
-            return [vertex_key]
-
         # check if vertex exists in graph
         if vertex_key not in self.vert_dict:
             raise ValueError("This vertex is not in graph!")
@@ -108,8 +105,8 @@ class Graph:
                     visited.add(neighbour.id)
                     # adding distance
                     distance[neighbour.id] = 1 + distance[vertex]
-        # returned a filtered list from distance dict of values == n
-        func = lambda vertex_key: distance[vertex_key] == n 
-        start_list = distance.keys()
-        return list(filter(func, start_list))  
+                    
+        # return minimum value from distance object
+        min_ = max(distance.keys(), key=(lambda vertex_key: distance[vertex_key])) 
+        
     
