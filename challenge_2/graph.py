@@ -65,6 +65,11 @@ class Graph(object):
         """return all the vertices in the graph"""
         return self.vert_dict.keys()
     
+    def get_edges(self, vertex: str) -> [str]:
+        """ Returns all of the edges of given vertex """
+        neighbours_dict = self.vert_dict[vertex].adj_dict_neighbours
+        
+    
     def breadth_first_search(self, vertex_a: str, vertex_b: str)-> object:
 
         """
@@ -74,10 +79,10 @@ class Graph(object):
                 vertex_a: from vertex.
                 vertex_b: to vertex.
             Returns:
-                shortest path between vertex_a and vertex_b
+                shortest path between vertex_a and vertex_b as dict.
         """
 
-        # check if verticies exists in graph
+        # Check if verticies exists in graph
         if vertex_a not in self.vert_dict:
             if vertex_b not in self.vert_dict:
                 raise ValueError("This vertex is not in graph!")
@@ -85,24 +90,26 @@ class Graph(object):
         # Queue to keep track of verticies
         queue = LinkedQueue()
 
-        # keeping track of visits
+        # Keeping track of visits
         visited = set()
 
-        # keeping track of distance between vertex_a and vertex_b
+        # Keeping track of all paths starting from vertex_a
         # path = {
-        #   vertex_start: [neighbour.id, 1],
-        #   neighbour.id: [neighbour_2.id, 1]
+        #   vertex_start: [neighbour.id: str, 1],
+        #   neighbour.id: [neighbour_2.id: str, 1],
+        #   ...
         # }
         path = dict()
         
         queue.enqueue(vertex_a)
         visited.add(vertex_a)
 
+        # Iterating through queue
         while not queue.is_empty():
             # Dequeue front vertex
             vertex = queue.dequeue()
 
-            for neighbour in self.vert_dict[vertex].neighbours:
+            for neighbour in self.vert_dict[vertex].adj_dict_neighbours:
                 if neighbour.id not in visited:
                     # adding str's, not objects
                     queue.enqueue(neighbour.id)
@@ -113,5 +120,5 @@ class Graph(object):
         # return minimum value from distance object
         # min_ = min(distance.keys(), key=(lambda vertex_key: distance[vertex_key])) 
 
-    
+        return path
     

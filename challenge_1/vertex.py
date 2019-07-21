@@ -7,7 +7,7 @@ class Vertex(object):
         initialize a vertex and its neighbors.
         """
         # {
-        #   "key": weight
+        #   vertex_obj: weight
         # }
 
         self.id = vertex

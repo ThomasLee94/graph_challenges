@@ -16,12 +16,16 @@ def challenge_2():
     for vertex in verticies:
         graph.add_vertex(vertex)
     
-    # add edges and weights
+    # add edges
     for tuple_ in edge_list:
         graph.add_edge(tuple_[0], tuple_[1])
     
-    graph.breadth_first_search("1","5")
+    output = graph.breadth_first_search("1","5")
+    edges = graph.get_edges("1")
 
-    print(graph.path)
+    # print(graph.vert_dict)
+    print(verticies)
+    print(edge_list)
+    print(f"EDGES: {edges}")
 
 challenge_2()

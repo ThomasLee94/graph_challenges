@@ -6,8 +6,8 @@ class Vertex(object):
         """
         initialize a vertex and its neighbors.
         """
-        # {
-        #   "key": weight
+        # adj_dict_neighbours = {
+        #   vertex_obj: weight
         # }
 
         self.id = vertex
