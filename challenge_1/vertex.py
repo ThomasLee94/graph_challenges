@@ -13,7 +13,7 @@ class Vertex(object):
         self.id = vertex
         self.adj_dict_neighbours = {}
 
-    def add_neighbour(self, vertex: Vertex, weight=0):
+    def add_neighbour(self, vertex: object, weight=0):
         """
         add a neighbour along a weighted edge
         """
