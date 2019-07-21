@@ -88,6 +88,7 @@ class Graph(object):
                 raise ValueError("This vertex is not in graph!")
 
         # Queue to keep track of verticies
+        # tail is front of queue
         queue = LinkedQueue()
 
         # Keeping track of visits
@@ -95,7 +96,7 @@ class Graph(object):
 
         # Keeping track of all paths starting from vertex_a
         # path = {
-        #   vertex_start: [(neighbour.id, 1)],
+        #   vertex_start: [(neighbour_1.id, 1)],
         #   neighbour.id: [(neighbour_2.id, 1)],
         #   ...
         # }
@@ -114,7 +115,7 @@ class Graph(object):
                     # adding str's, not objects
                     queue.enqueue(neighbour.id)
                     visited.add(neighbour.id)
-                    # adding paths
+                    # adding paths as a list of tuples
                     if vertex in path:
                         path[vertex].append((neighbour.id, 1))
                     else:

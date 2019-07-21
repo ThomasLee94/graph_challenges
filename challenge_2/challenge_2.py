@@ -29,5 +29,6 @@ def challenge_2():
     # print(verticies)
     # print(edge_list)
     print(output)
+    print(graph.vert_dict["3"].id)
 
 challenge_2()
