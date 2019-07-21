@@ -37,15 +37,15 @@ return all the vertices in the graph
 Vertex(self, vertex: str)
 ```
 
-### add_neighbor
+### add_neighbour
 ```python
-Vertex.add_neighbor(self, vertex: object, weight=0)
+Vertex.add_neighbour(self, vertex: object, weight=0)
 ```
 
-add a neighbor along a weighted edge
+add a neighbour along a weighted edge
 
-### get_neighbors
+### get_neighbours
 ```python
-Vertex.get_neighbors(self) -> dict
+Vertex.get_neighbours(self) -> dict
 ```
 returns all vertices (nodes) connected to this vertex (node)

@@ -57,7 +57,7 @@ class Digraph:
         vertex_b_obj = self.vert_dict[vertex_b]
 
         # making vertex_b a neighbour to vertex_a by adding an edge
-        vertex_a_obj.add_neighbor(vertex_b_obj, weight)
+        vertex_a_obj.add_neighbour(vertex_b_obj, weight)
         # increment edge count
         self.num_edges +=1 
         

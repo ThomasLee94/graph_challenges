@@ -5,7 +5,7 @@ from vertex import Vertex
 
 class Graph(object):
     """ essential facts and functionalities of an undirected graph"""
-    
+
     def __init__(self):
         """ 
         initialises a graph object with an empty dict.
@@ -55,8 +55,10 @@ class Graph(object):
         vertex_a_obj = self.vert_dict[vertex_a]
         vertex_b_obj = self.vert_dict[vertex_b]
 
-        # making vertex_b a neighbour to vertex_a by adding an edge
-        vertex_a_obj.add_neighbor(vertex_b_obj, weight)
+        # adding edges in both ways
+        vertex_a_obj.add_neighbour(vertex_b_obj, weight)
+        vertex_b_obj.add_neighbour(vertex_a_obj, weight)
+
         # increment edge count
         self.num_edges +=1 
         

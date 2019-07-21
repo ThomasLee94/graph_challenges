@@ -19,7 +19,7 @@ class VertexTest(unittest.TestCase):
         weight = 3
         vertex_a_obj = Vertex(vertex_a)
         vertex_b_obj = Vertex(vertex_b)
-        vertex_a_obj.add_neighbor(vertex_b_obj, weight)
+        vertex_a_obj.add_neighbour(vertex_b_obj, weight)
         self.assertEqual(len(vertex_a_obj.adj_dict_neighbours), 1) 
         self.assertEqual(vertex_a_obj.adj_dict_neighbours[vertex_b_obj], weight)
 
@@ -29,8 +29,8 @@ class VertexTest(unittest.TestCase):
         weight = 3
         vertex_a_obj = Vertex(vertex_a)
         vertex_b_obj = Vertex(vertex_b)
-        vertex_a_obj.add_neighbor(vertex_b_obj, weight)
-        dict_output = vertex_a_obj.get_neighbors()
+        vertex_a_obj.add_neighbour(vertex_b_obj, weight)
+        dict_output = vertex_a_obj.get_neighbours()
         self.assertIsInstance(dict_output, dict)
         self.assertEqual(len(dict_output), 1) 
         self.assertEqual(dict_output[vertex_b_obj], 3)
