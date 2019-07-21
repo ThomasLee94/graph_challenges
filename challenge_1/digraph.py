@@ -4,7 +4,7 @@
 
 from vertex import Vertex
 
-class Graph:
+class Digraph:
     def __init__(self):
         """ 
         initialises a graph object with an empty dict.
