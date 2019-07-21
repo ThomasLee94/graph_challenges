@@ -122,6 +122,5 @@ class Graph(object):
                         path[vertex].append((neighbour.id, 1))
                     else:
                         path[vertex] = [(neighbour.id, 1)]
-
         return path
     
