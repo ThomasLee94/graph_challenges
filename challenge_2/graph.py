@@ -1,11 +1,11 @@
 # !python
 
-# essential facts and functionalities of graphs 
-
 from queue import LinkedQueue
 from vertex import Vertex
 
 class Graph(object):
+    """ essential facts and functionalities of an undirected graph"""
+    
     def __init__(self):
         """ 
         initialises a graph object with an empty dict.

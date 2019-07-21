@@ -5,6 +5,8 @@
 from vertex import Vertex
 
 class Digraph:
+    """ essential facts and functionalities of a directed graph"""
+    
     def __init__(self):
         """ 
         initialises a graph object with an empty dict.
