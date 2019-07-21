@@ -65,10 +65,12 @@ class Graph(object):
 
     def get_vertices(self):
         """return all the vertices in the graph"""
+
         return self.vert_dict.keys()
     
     def get_edges(self, vertex: str) -> [str]:
         """ Returns all of the edges of given vertex """
+        
         return self.vert_dict[vertex].adj_dict_neighbours
             
     
