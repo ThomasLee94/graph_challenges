@@ -5,7 +5,7 @@
 from queue import LinkedQueue
 from vertex import Vertex
 
-class Graph:
+class Graph(object):
     def __init__(self):
         """ 
         initialises a graph object with an empty dict.
@@ -65,34 +65,38 @@ class Graph:
         """return all the vertices in the graph"""
         return self.vert_dict.keys()
     
-    def breadth_first_search(self, vertex_key: str)-> object:
+    def breadth_first_search(self, vertex_a: str, vertex_b: str)-> object:
 
         """
-            Creates a object with all lengths mapped to vertex_key and returns object
-            containing shortest path with verticies.
+            Finds the shortest path between the 2 input verticies. 
 
             Args:
-                vertex_key: single str, first iteration of recursive call stack. 
-                            Treat as root node, will only be inputted once.
+                vertex_a: from vertex.
+                vertex_b: to vertex.
             Returns:
-
+                shortest path between vertex_a and vertex_b
         """
 
-        # check if vertex exists in graph
-        if vertex_key not in self.vert_dict:
-            raise ValueError("This vertex is not in graph!")
+        # check if verticies exists in graph
+        if vertex_a not in self.vert_dict:
+            if vertex_b not in self.vert_dict:
+                raise ValueError("This vertex is not in graph!")
 
         # Queue to keep track of verticies
         queue = LinkedQueue()
+
         # keeping track of visits
         visited = set()
-        # keeping track of distance between child and parent verticies
-        distance = {
-            vertex_key: 0
-        }
+
+        # keeping track of distance between vertex_a and vertex_b
+        # path = {
+        #   vertex_start: [neighbour.id, 1],
+        #   neighbour.id: [neighbour_2.id, 1]
+        # }
+        path = dict()
         
-        queue.enqueue(vertex_key)
-        visited.add(vertex_key)
+        queue.enqueue(vertex_a)
+        visited.add(vertex_a)
 
         while not queue.is_empty():
             # Dequeue front vertex
@@ -104,9 +108,10 @@ class Graph:
                     queue.enqueue(neighbour.id)
                     visited.add(neighbour.id)
                     # adding distance
-                    distance[neighbour.id] = 1 + distance[vertex]
+                    path[vertex] = [neighbour.id, 1]
                     
         # return minimum value from distance object
-        min_ = max(distance.keys(), key=(lambda vertex_key: distance[vertex_key])) 
-        
+        # min_ = min(distance.keys(), key=(lambda vertex_key: distance[vertex_key])) 
+
+    
     
