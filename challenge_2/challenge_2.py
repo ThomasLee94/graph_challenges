@@ -23,12 +23,12 @@ def challenge_2():
     output = graph.breadth_first_search("1","5")
     edge_neighbour_dict = graph.get_edges("3")
 
-    for key in edge_neighbour_dict:
-        print(key.id)
+    # for key in edge_neighbour_dict:
+    #     # print(key.id)
 
     # print(verticies)
     # print(edge_list)
-    print(output)
-    print(graph.vert_dict["3"].id)
+    # print(output)
+    # print(graph.vert_dict["3"].id)
 
 challenge_2()

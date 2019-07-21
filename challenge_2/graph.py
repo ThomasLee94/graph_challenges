@@ -113,6 +113,8 @@ class Graph(object):
             for neighbour in self.vert_dict[vertex].adj_dict_neighbours:
                 if neighbour.id not in visited:
                     # adding str's, not objects
+                    print(f"VERTEX {vertex}")
+                    print(f"NEIGHBOUR {neighbour.id}")
                     queue.enqueue(neighbour.id)
                     visited.add(neighbour.id)
                     # adding paths as a list of tuples
@@ -120,9 +122,6 @@ class Graph(object):
                         path[vertex].append((neighbour.id, 1))
                     else:
                         path[vertex] = [(neighbour.id, 1)]
-                    
-        # return minimum value from distance object
-        # min_ = min(distance.keys(), key=(lambda vertex_key: distance[vertex_key])) 
 
         return path
     
