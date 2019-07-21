@@ -6,7 +6,7 @@ class Vertex(object):
         """
         initialize a vertex and its neighbors.
         """
-        # {
+        # adj_dict_neighbours = {
         #   vertex_obj: weight
         # }
 
