@@ -21,11 +21,13 @@ def challenge_2():
         graph.add_edge(tuple_[0], tuple_[1])
     
     output = graph.breadth_first_search("1","5")
-    edges = graph.get_edges("1")
+    edge_neighbour_dict = graph.get_edges("3")
 
-    # print(graph.vert_dict)
-    print(verticies)
-    print(edge_list)
-    print(f"EDGES: {edges}")
+    for key in edge_neighbour_dict:
+        print(key.id)
+
+    # print(verticies)
+    # print(edge_list)
+    print(output)
 
 challenge_2()

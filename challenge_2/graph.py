@@ -67,8 +67,8 @@ class Graph(object):
     
     def get_edges(self, vertex: str) -> [str]:
         """ Returns all of the edges of given vertex """
-        neighbours_dict = self.vert_dict[vertex].adj_dict_neighbours
-        
+        return self.vert_dict[vertex].adj_dict_neighbours
+            
     
     def breadth_first_search(self, vertex_a: str, vertex_b: str)-> object:
 
@@ -95,8 +95,8 @@ class Graph(object):
 
         # Keeping track of all paths starting from vertex_a
         # path = {
-        #   vertex_start: [neighbour.id: str, 1],
-        #   neighbour.id: [neighbour_2.id: str, 1],
+        #   vertex_start: [(neighbour.id, 1)],
+        #   neighbour.id: [(neighbour_2.id, 1)],
         #   ...
         # }
         path = dict()
@@ -114,8 +114,11 @@ class Graph(object):
                     # adding str's, not objects
                     queue.enqueue(neighbour.id)
                     visited.add(neighbour.id)
-                    # adding distance
-                    path[vertex] = [neighbour.id, 1]
+                    # adding paths
+                    if vertex in path:
+                        path[vertex].append((neighbour.id, 1))
+                    else:
+                        path[vertex] = [(neighbour.id, 1)]
                     
         # return minimum value from distance object
         # min_ = min(distance.keys(), key=(lambda vertex_key: distance[vertex_key])) 
