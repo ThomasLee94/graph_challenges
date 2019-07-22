@@ -10,6 +10,7 @@ def challenge_2(file: str, vertex_a: str, vertex_b: str)->str:
     for edge in edges_str:
         edge_list.append(string_to_tuple(edge))
 
+    # create graph
     graph = Graph()
 
     # add verticies
@@ -20,6 +21,7 @@ def challenge_2(file: str, vertex_a: str, vertex_b: str)->str:
     for tuple_ in edge_list:
         graph.add_edge(tuple_[0], tuple_[1])
     
+    # getting parent dict
     dict_ = graph.breadth_first_search(vertex_a,vertex_b)
 
     parent = dict_[vertex_b]
