@@ -1,20 +1,20 @@
 #!python
 
-from digraph import Digraph
+from graph import Graph
 from vertex import Vertex
 import unittest
 
-class DigraphTest(unittest.TestCase):
+class GraphTest(unittest.TestCase):
 
     def test_init(self):
-        graph = Digraph()
+        graph = Graph()
         self.assertEqual(len(graph.vert_dict), 0) 
         self.assertEqual(graph.num_vertices, 0) 
         self.assertEqual(graph.num_edges, 0) 
 
     def test_add_vertex(self):
         vertex_a = "A"
-        graph = Digraph()
+        graph = Graph()
         graph.add_vertex(vertex_a)
         self.assertEqual(len(graph.vert_dict), 1) 
         self.assertEqual(graph.num_vertices, 1)
@@ -25,7 +25,7 @@ class DigraphTest(unittest.TestCase):
     
     def test_get_vertex(self):
         vertex_a = "A"
-        graph = Digraph()
+        graph = Graph()
         graph.add_vertex(vertex_a)
         output_obj = graph.get_vertex(vertex_a)
         self.assertIsInstance(output_obj, Vertex)
@@ -34,7 +34,7 @@ class DigraphTest(unittest.TestCase):
         vertex_a = "A"
         vertex_b = "B"
         weight = 3
-        graph = Digraph()
+        graph = Graph()
         graph.add_vertex(vertex_a)
         graph.add_vertex(vertex_b)
         graph.add_edge(vertex_a, vertex_b, weight)
