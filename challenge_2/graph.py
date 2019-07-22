@@ -99,6 +99,9 @@ class Graph(object):
         visited = set()
 
         # create dict to store parent and children verticies
+        # parent = {
+        #   parent_vertex: child_vertex
+        # }
         parent = dict()
         
         queue.enqueue(vertex_a)
