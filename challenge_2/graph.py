@@ -77,13 +77,13 @@ class Graph(object):
     def breadth_first_search(self, vertex_a: str, vertex_b: str)-> object:
 
         """
-            Finds the shortest path between the 2 input verticies. 
+            Executes a breadth for search on the given graph. 
 
             Args:
                 vertex_a: from vertex.
                 vertex_b: to vertex.
             Returns:
-                shortest path between vertex_a and vertex_b as dict.
+                a dict of containing parent and child verticies.
         """
 
         # Check if verticies exists in graph
@@ -98,13 +98,8 @@ class Graph(object):
         # Keeping track of visits
         visited = set()
 
-        # Keeping track of all paths starting from vertex_a
-        # path = {
-        #   vertex_start: [(neighbour_1.id, 1)],
-        #   neighbour.id: [(neighbour_2.id, 1)],
-        #   ...
-        # }
-        path = dict()
+        # create dict to store parent and children verticies
+        parent = dict()
         
         queue.enqueue(vertex_a)
         visited.add(vertex_a)
@@ -117,14 +112,10 @@ class Graph(object):
             for neighbour in self.vert_dict[vertex].adj_dict_neighbours:
                 if neighbour.id not in visited:
                     # adding str's, not objects
-                    print(f"VERTEX {vertex}")
-                    print(f"NEIGHBOUR {neighbour.id}")
                     queue.enqueue(neighbour.id)
                     visited.add(neighbour.id)
-                    # adding paths as a list of tuples
-                    if vertex in path:
-                        path[vertex].append((neighbour.id, 1))
-                    else:
-                        path[vertex] = [(neighbour.id, 1)]
-        return path
+                    # creating key-value pair in parent dict
+                    parent[neighbour.id] = vertex
+                    
+        return parent
     

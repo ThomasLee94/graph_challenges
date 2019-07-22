@@ -2,8 +2,8 @@ from read_data import graph_from_file, string_to_tuple
 from vertex import Vertex
 from graph import Graph
 
-def challenge_2():
-    _, verticies, edges_str = graph_from_file("graph_data.txt")
+def challenge_2(file: str, vertex_a: str, vertex_b: str)->str:
+    _, verticies, edges_str = graph_from_file(file)
     
     # creating edge_list iterable 
     edge_list = list()
@@ -20,15 +20,23 @@ def challenge_2():
     for tuple_ in edge_list:
         graph.add_edge(tuple_[0], tuple_[1])
     
-    output = graph.breadth_first_search("1","5")
-    edge_neighbour_dict = graph.get_edges("3")
+    dict_ = graph.breadth_first_search(vertex_a,vertex_b)
 
-    for key in edge_neighbour_dict:
-        print(key.id)
+    parent = dict_[vertex_b]
+    output = list()
 
-    # print(verticies)
-    # print(edge_list)
-    print(output)
-    # print(graph.vert_dict["3"].id)
+    # append vertex_b
+    output.append(vertex_b)
 
-challenge_2()
+    # walking backwards in "parent" dict
+    while parent != vertex_a:
+        output.insert(0, parent)
+        parent = dict_[parent]
+    
+    # prepending vertex_a
+    output.insert(0, vertex_a)
+
+    print(f"Vertices in shortest path: {output}")
+    print(f"Number of edges in shortest path: {len(output)-1}")
+    
+challenge_2("graph_data.txt", "1", "5")
