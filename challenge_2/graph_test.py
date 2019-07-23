@@ -33,20 +33,20 @@ class GraphTest(unittest.TestCase):
     def test_add_edge(self):
         vertex_a = "A"
         vertex_b = "B"
-        weight = 3
+        
         graph = Graph()
         graph.add_vertex(vertex_a)
         graph.add_vertex(vertex_b)
-        graph.add_edge(vertex_a, vertex_b, weight)
+        graph.add_edge(vertex_a, vertex_b)
         self.assertEqual(graph.num_edges, 1)
-        
-        # test for correct adjacency list (neighbours)
-        for vertex in graph.vert_dict:
-            vert = graph.get_vertex(vertex)
-            for neighbour, weight_ in vert.adj_dict_neighbours.items():
-                self.assertEqual(vertex_b, neighbour.id)
-                self.assertEqual(weight, weight_)
     
+        vertex_a_obj = graph.vert_dict[vertex_a]
+        vertex_b_obj = graph.vert_dict[vertex_b]
+        
+        # check if vertex_a & vertex_b are neighbours of each other.
+        self.assertIn(vertex_a_obj, vertex_b_obj.adj_dict_neighbours)
+        self.assertIn(vertex_b_obj, vertex_a_obj.adj_dict_neighbours)
+
     def test_shortest_path(self):
         graph = Graph()
         verticies = ["1","2","3","4","5"]
@@ -66,9 +66,8 @@ class GraphTest(unittest.TestCase):
         output = graph.breadth_first_search(from_vertex, to_vertex)
         expected_output = {'2': '1', '4': '1', '3': '2', '5': '2'}
 
+        # output is used to calculate the shortest path
         self.assertEqual(output, expected_output)
-        
-        
         
         
 if __name__ == '__main__':

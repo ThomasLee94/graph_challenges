@@ -33,7 +33,7 @@ class Graph(object):
             self.num_vertices += 1
         return self.vert_dict[key]
 
-    def get_vertex(self, key: str):
+    def get_vertex(self, key: str)->object:
         """return the vertex if it exists"""
 
         return self.vert_dict[key]
