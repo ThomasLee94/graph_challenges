@@ -100,7 +100,7 @@ class Graph(object):
 
         # create dict to store parent and children verticies
         # parent = {
-        #   parent_vertex: child_vertex
+        #   child_vertex: parent_vertex
         # }
         parent = dict()
         

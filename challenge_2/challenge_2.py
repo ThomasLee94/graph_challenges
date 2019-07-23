@@ -32,12 +32,13 @@ def challenge_2(file: str, vertex_a: str, vertex_b: str)->str:
 
     # walking backwards in "parent" dict
     while parent != vertex_a:
-        output.insert(0, parent)
+        output.append(parent)
         parent = dict_[parent]
     
     # prepending vertex_a
-    output.insert(0, vertex_a)
-
+    output.append(vertex_a)
+    output = output[::-1]
+    
     print(f"Vertices in shortest path: {output}")
     print(f"Number of edges in shortest path: {len(output)-1}")
     
