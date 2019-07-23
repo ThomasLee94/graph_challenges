@@ -1,7 +1,7 @@
 #!python
 
-from graph import Graph
-from vertex import Vertex
+from classes.graph import Graph
+from classes.vertex import Vertex
 import unittest
 
 class GraphTest(unittest.TestCase):
@@ -60,7 +60,10 @@ class GraphTest(unittest.TestCase):
         for tuple_edge in edges:
             graph.add_edge(tuple_edge[0], tuple_edge[1])
         
-        output = graph.breadth_first_search("1","5")
+        from_vertex = "1"
+        to_vertex = "5"
+        
+        output = graph.breadth_first_search(from_vertex, to_vertex)
         expected_output = {'2': '1', '4': '1', '3': '2', '5': '2'}
 
         self.assertEqual(output, expected_output)

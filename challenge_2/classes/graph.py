@@ -1,7 +1,7 @@
 # !python
 
-from queue import LinkedQueue
-from vertex import Vertex
+from classes.queue import LinkedQueue
+from classes.vertex import Vertex
 
 class Graph(object):
     """ essential facts and functionalities of an undirected graph"""
