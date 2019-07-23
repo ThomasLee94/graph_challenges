@@ -2,7 +2,7 @@
 
 # essential facts and functionalities of graphs 
 
-from vertex import Vertex
+from classes.vertex import Vertex
 
 class Digraph:
     """ essential facts and functionalities of a directed graph"""

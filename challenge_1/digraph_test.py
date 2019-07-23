@@ -1,7 +1,7 @@
 #!python
 
-from digraph import Digraph
-from vertex import Vertex
+from classes.digraph import Digraph
+from classes.vertex import Vertex
 import unittest
 
 class DigraphTest(unittest.TestCase):

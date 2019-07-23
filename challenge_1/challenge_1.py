@@ -1,6 +1,6 @@
-from read_data import graph_from_file, string_to_tuple
-from vertex import Vertex
-from digraph import Digraph
+from util.read_data import graph_from_file, string_to_tuple
+from classes.vertex import Vertex
+from classes.digraph import Digraph
 
 def challenge_1(file: str) -> str:
     _, verticies, edges_str = graph_from_file(file)

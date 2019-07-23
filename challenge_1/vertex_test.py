@@ -1,6 +1,6 @@
 #!python
 
-from vertex import Vertex
+from classes.vertex import Vertex
 import unittest
 
 class VertexTest(unittest.TestCase):
