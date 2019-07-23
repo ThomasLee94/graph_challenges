@@ -32,7 +32,6 @@ class LinkedQueue(object):
 
     def enqueue(self, item):
         """Insert the given item at the back of this queue."""
-        # ! Best & worst runtime = O(1), is not dependent on length of queue
 
         self.list.append(item)
 
@@ -47,7 +46,6 @@ class LinkedQueue(object):
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty."""
-        # ! Worst & best case runtime = O(1), not dependent on length of ll
         
         # case: no nodes
         if self.list.length() < 1:
