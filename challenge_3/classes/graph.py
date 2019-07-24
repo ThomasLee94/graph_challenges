@@ -93,12 +93,13 @@ class Graph(object):
             if vertex_b not in self.vert_dict:
                 raise ValueError("This vertex is not in graph!")
 
-        # Queue to keep track of verticies
-        # tail is front of queue
-        queue = LinkedQueue()
+        # Queue to keep track of verticies, enqueue vertex_a
+        queue = LinkedQueue(vertex_a)
 
         # Keeping track of visits
         visited = set()
+        # add vertex_a to set
+        visited.add(vertex_a)
 
         # create dict to store parent and children verticies
         # parent = {
@@ -106,9 +107,6 @@ class Graph(object):
         # }
         child_parent_path = dict()
         
-        queue.enqueue(vertex_a)
-        visited.add(vertex_a)
-
         # Iterating through queue
         while not queue.is_empty():
             # Dequeue front vertex
@@ -123,6 +121,8 @@ class Graph(object):
                     child_parent_path[neighbour.id] = vertex
                     
         return child_parent_path
+    
+   
     
     def _pre_order_dfs_recursive(self, vertex: str, visit):
             """
