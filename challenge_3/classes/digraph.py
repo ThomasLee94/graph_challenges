@@ -74,7 +74,7 @@ class Digraph(object):
                 Args
                     vertex_a: start vertex
                     vertex_b: to vertex
-                    custom_func: input custom or built-in function
+                    visited: Set method to keep track of visited verticies. 
 
                 Returns
                     If vertex_b is in any branch from vertex_a: return True
@@ -90,13 +90,13 @@ class Digraph(object):
                 # add neighbours of vertex_a in stack
                 for neighbour in self.vert_dict[vertex_a].adj_dict_neighbours:
                     # visit neighbours recursively
-                    self.dfs_recursive(neighbour.id, vertex_b, visited)
+                    return self.dfs_recursive(neighbour.id, vertex_b, visited)
             
             # Catch all
             return False
 
     
-    def _pre_order_dfs_iterative(self, vertex_a: str, vertex_b: str):
+    def dfs_iterative(self, vertex_a: str, vertex_b: str):
             """
                 Executes a pre-order depth first search on the given graph.
 
