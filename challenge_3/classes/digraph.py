@@ -67,12 +67,13 @@ class Digraph:
         """return all the vertices in the graph"""
         return self.vert_dict.keys()
     
-    def dfs_recursive(self, vertex_a: str, visit):
+    def dfs_recursive(self, vertex_a: str, vertex_b: str, visit)->bool:
             """
                 Executes a pre-order depth first search on the given graph.
 
                 Args
                     vertex_a: start vertex
+                    vertex_b: to vertex
                     visit: given function
 
                 Returns
@@ -80,18 +81,19 @@ class Digraph:
             """
 
             while vertex_a is not None:
+                # if vertex_b is found
+                if vertex_a is vertex_b:
+                    return True
+                # visit vertex_a
                 visit(vertex_a)
+                # add neighbours of vertex_a in stack
                 for neighbour in self.vert_dict[vertex_a].adj_dict_neighbours:
-                    self.dfs_recursive(neighbour.id, visit)
+                    # visit neighbours recursively
+                    self.dfs_recursive(neighbour.id, vertex_b, visit)
+            
+            # Catch all
+            return False
 
-            # # check to see if starting node contains data
-            # if node is not None:
-            #     # Visit this node's data with given function
-            #     visit(node.data)
-            #     # Traverse left subtree, if it exists
-            #     self._traverse_pre_order_recursive(node.left, visit)
-            #     # Traverse right subtree, if it exists
-            #     self._traverse_pre_order_recursive(node.right, visit)
     
     def _pre_order_dfs_iterative(self, vertex_a: str, vertex_b: str):
             """
