@@ -3,6 +3,7 @@
 # essential facts and functionalities of graphs 
 
 from classes.vertex import Vertex
+from classes.stack import LinkedStack
 
 class Digraph:
     """ essential facts and functionalities of a directed graph"""
@@ -120,6 +121,7 @@ class Digraph:
             if node is not None:
                 # Visit this node's data with given function
                 visit(node.data)
+
                 # Traverse left subtree, if it exists
                 self._traverse_pre_order_recursive(node.left, visit)
                 # Traverse right subtree, if it exists
