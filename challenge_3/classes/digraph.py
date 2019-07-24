@@ -1,13 +1,12 @@
-
 # !python
 
+# essential facts and functionalities of graphs 
+
 from classes.vertex import Vertex
-from classes.stack import LinkedStack
-from classes.queue import LinkedQueue
 
-class Graph(object):
-    """ essential facts and functionalities of an undirected graph"""
-
+class Digraph:
+    """ essential facts and functionalities of a directed graph"""
+    
     def __init__(self):
         """ 
         initialises a graph object with an empty dict.
@@ -35,7 +34,7 @@ class Graph(object):
             self.num_vertices += 1
         return self.vert_dict[key]
 
-    def get_vertex(self, key: str)->object:
+    def get_vertex(self, key: str):
         """return the vertex if it exists"""
 
         return self.vert_dict[key]
@@ -57,70 +56,15 @@ class Graph(object):
         vertex_a_obj = self.vert_dict[vertex_a]
         vertex_b_obj = self.vert_dict[vertex_b]
 
-        # adding edges in both ways
+        # making vertex_b a neighbour to vertex_a by adding an edge
         vertex_a_obj.add_neighbour(vertex_b_obj, weight)
-        vertex_b_obj.add_neighbour(vertex_a_obj, weight)
-
         # increment edge count
         self.num_edges +=1 
         
 
     def get_vertices(self):
         """return all the vertices in the graph"""
-
         return self.vert_dict.keys()
-    
-    def get_edges(self, vertex: str) -> [str]:
-        """ Returns all of the edges of given vertex """
-        
-        return self.vert_dict[vertex].adj_dict_neighbours
-            
-    
-    def breadth_first_search(self, vertex_a: str, vertex_b: str)-> object:
-
-        """
-            Executes a breadth for search on the given graph. 
-
-            Args:
-                vertex_a: from vertex.
-                vertex_b: to vertex.
-            Returns:
-                a dict of containing parent and child verticies.
-        """
-
-        # Check if verticies exists in graph
-        if vertex_a not in self.vert_dict:
-            if vertex_b not in self.vert_dict:
-                raise ValueError("This vertex is not in graph!")
-
-        # Queue to keep track of verticies, enqueue vertex_a
-        queue = LinkedQueue(vertex_a)
-
-        # Keeping track of visits
-        visited = set()
-        # add vertex_a to set
-        visited.add(vertex_a)
-
-        # create dict to store parent and children verticies
-        # parent = {
-        #   child_vertex: parent_vertex
-        # }
-        child_parent_path = dict()
-        
-        # Iterating through queue
-        while not queue.is_empty():
-            # Dequeue front vertex
-            vertex = queue.dequeue()
-
-            for neighbour in self.vert_dict[vertex].adj_dict_neighbours:
-                if neighbour.id not in visited:
-                    # adding str's, not objects
-                    queue.enqueue(neighbour.id)
-                    visited.add(neighbour.id)
-                    # creating key-value pair in parent dict
-                    child_parent_path[neighbour.id] = vertex
-                    
-        return child_parent_path
     
     def dfs_recursive(self, vertex_a: str, visit):
             """
