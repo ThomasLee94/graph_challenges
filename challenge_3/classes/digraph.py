@@ -5,7 +5,7 @@
 from classes.vertex import Vertex
 from classes.stack import LinkedStack
 
-class Digraph:
+class Digraph(object):
     """ essential facts and functionalities of a directed graph"""
     
     def __init__(self):

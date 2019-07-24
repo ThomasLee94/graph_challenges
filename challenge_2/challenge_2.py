@@ -1,5 +1,4 @@
 from util.read_data import graph_from_file, string_to_tuple
-from classes.vertex import Vertex
 from classes.graph import Graph
 
 def challenge_2(file: str, vertex_a: str, vertex_b: str)->str:
