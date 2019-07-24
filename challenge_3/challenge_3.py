@@ -19,7 +19,8 @@ def challenge_3(file: str, vertex_a: str, vertex_b: str):
     for tuple_ in edge_list:
         graph.add_edge(tuple_[0], tuple_[1], int(tuple_[2]))
 
-    print(f"There exists a path between vertex {vertex_a} and {vertex_b}: {graph.dfs_recursive(vertex_a, vertex_b)}")
+    # using recursion
+    print(f"There exists a path between vertex {vertex_a} and {vertex_b}: {graph.dfs_recursive(vertex_a, vertex_b, print}")
     print(f"The weight of the minimum weight path between vertex {vertex_a} and {vertex_b} is: 10")
 
 challenge_3("graph_data.txt", "1", "5")

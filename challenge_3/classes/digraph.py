@@ -67,29 +67,30 @@ class Digraph(object):
         """return all the vertices in the graph"""
         return self.vert_dict.keys()
     
-    def dfs_recursive(self, vertex_a: str, vertex_b: str, visit)->bool:
+    def dfs_recursive(self, vertex_a: str, vertex_b: str, custom_func)->bool:
             """
                 Executes a pre-order depth first search on the given graph.
 
                 Args
                     vertex_a: start vertex
                     vertex_b: to vertex
-                    visit: given function
+                    custom_func: input custom or built-in function
 
                 Returns
-
+                    If vertex_b is in any branch from vertex_a: return True
+                    If vertex_b not in any branch from vertex_a: return False 
             """
 
             while vertex_a is not None:
                 # if vertex_b is found
-                if vertex_a is vertex_b:
+                if vertex_a == vertex_b:
                     return True
-                # visit vertex_a
-                visit(vertex_a)
+                # execute custom_func on vertex_a
+                custom_func(vertex_a)
                 # add neighbours of vertex_a in stack
                 for neighbour in self.vert_dict[vertex_a].adj_dict_neighbours:
                     # visit neighbours recursively
-                    self.dfs_recursive(neighbour.id, vertex_b, visit)
+                    self.dfs_recursive(neighbour.id, vertex_b, custom_func)
             
             # Catch all
             return False
