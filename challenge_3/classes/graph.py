@@ -104,7 +104,7 @@ class Graph(object):
         # parent = {
         #   child_vertex: parent_vertex
         # }
-        parent = dict()
+        child_parent_path = dict()
         
         queue.enqueue(vertex_a)
         visited.add(vertex_a)
@@ -120,21 +120,30 @@ class Graph(object):
                     queue.enqueue(neighbour.id)
                     visited.add(neighbour.id)
                     # creating key-value pair in parent dict
-                    parent[neighbour.id] = vertex
+                    child_parent_path[neighbour.id] = vertex
                     
-        return parent
+        return child_parent_path
     
-def _traverse_pre_order_recursive(self, node, visit):
-        """Traverse this binary tree with recursive pre-order traversal (DFS).
-        Start at the given node and visit each node with the given function."""
+    def _pre_order_dfs_recursive(self, vertex: str, visit):
+            """
+                Executes a pre-order depth first search on the given graph.
 
-        # ! Runtime = O(n), must visit each node
+                Args
+                    node: start vertex
+                    visit: given function
 
-        # check to see if starting node contains data
-        if node is not None:
-            # Visit this node's data with given function
-            visit(node.data)
-            # Traverse left subtree, if it exists
-            self._traverse_pre_order_recursive(node.left, visit)
-            # Traverse right subtree, if it exists
-            self._traverse_pre_order_recursive(node.right, visit)
+                Returns
+
+            """
+
+            # Stack to keep track of verticies
+            stack = LinkedStack()
+
+            # check to see if starting node contains data
+            if node is not None:
+                # Visit this node's data with given function
+                visit(node.data)
+                # Traverse left subtree, if it exists
+                self._traverse_pre_order_recursive(node.left, visit)
+                # Traverse right subtree, if it exists
+                self._traverse_pre_order_recursive(node.right, visit)

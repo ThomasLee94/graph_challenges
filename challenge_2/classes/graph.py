@@ -1,7 +1,8 @@
+
 # !python
 
-from classes.queue import LinkedQueue
 from classes.vertex import Vertex
+from classes.queue import LinkedQueue
 
 class Graph(object):
     """ essential facts and functionalities of an undirected graph"""
@@ -91,21 +92,20 @@ class Graph(object):
             if vertex_b not in self.vert_dict:
                 raise ValueError("This vertex is not in graph!")
 
-        # Queue to keep track of verticies
-        # tail is front of queue
-        queue = LinkedQueue()
+        # Queue to keep track of verticies, enqueue vertex_a
+        queue = LinkedQueue(vertex_a)
 
         # Keeping track of visits
         visited = set()
+        # add vertex_a to set
+        visited.add(vertex_a)
 
         # create dict to store parent and children verticies
         # parent = {
         #   child_vertex: parent_vertex
         # }
-        parent = dict()
+        child_parent_path = dict()
         
-        queue.enqueue(vertex_a)
-        visited.add(vertex_a)
 
         # Iterating through queue
         while not queue.is_empty():
@@ -118,7 +118,8 @@ class Graph(object):
                     queue.enqueue(neighbour.id)
                     visited.add(neighbour.id)
                     # creating key-value pair in parent dict
-                    parent[neighbour.id] = vertex
+                    child_parent_path[neighbour.id] = vertex
                     
-        return parent
+        return child_parent_path
     
+   
