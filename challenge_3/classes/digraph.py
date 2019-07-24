@@ -67,7 +67,7 @@ class Digraph(object):
         """return all the vertices in the graph"""
         return self.vert_dict.keys()
     
-    def dfs_recursive(self, vertex_a: str, vertex_b: str, visited: Set())->bool:
+    def dfs_recursive(self, vertex_a: str, vertex_b: str, visited)->bool:
             """
                 Executes a pre-order depth first search on the given graph.
 
