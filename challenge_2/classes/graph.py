@@ -111,8 +111,12 @@ class Graph(object):
         while not queue.is_empty():
             # Dequeue front vertex
             vertex = queue.dequeue()
-
-            for neighbour in self.vert_dict[vertex].adj_dict_neighbours:
+            
+            # sorting keys in adjacency list to evaluate vertex.id
+            keys = self.vert_dict[vertex].adj_dict_neighbours.keys()
+            sorted_keys = sorted(keys, key = lambda vertex: vertex.id)
+            # looping through neighbours
+            for neighbour in sorted_keys:
                 if neighbour.id not in visited:
                     # adding str's, not objects
                     queue.enqueue(neighbour.id)
@@ -120,6 +124,6 @@ class Graph(object):
                     # creating key-value pair in parent dict
                     child_parent_path[neighbour.id] = vertex
                     
-        return child_parent_path
+        return child_parent_path 
     
    

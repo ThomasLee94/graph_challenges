@@ -92,7 +92,7 @@ class Digraph(object):
                 # add neighbours of vertex_a in stack
                 for neighbour in self.vert_dict[vertex_a].adj_dict_neighbours:
                     # visit neighbours recursively
-                    return self.dfs_recursive(neighbour.id, vertex_b, visited)
+                    return self.dfs_recursive(neighbour.id, vertex_b, visited, custom_func)
             
             # Catch all
             return False
