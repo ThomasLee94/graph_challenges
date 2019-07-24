@@ -122,22 +122,55 @@ class Graph(object):
                     
         return child_parent_path
     
-   
-    
-    def _pre_order_dfs_recursive(self, vertex: str, visit):
+    def dfs_recursive(self, vertex_a: str, visit):
             """
                 Executes a pre-order depth first search on the given graph.
 
                 Args
-                    node: start vertex
+                    vertex_a: start vertex
                     visit: given function
 
                 Returns
 
             """
 
+            while vertex_a is not None:
+                visit(vertex_a)
+                for neighbour in self.vert_dict[vertex_a].adj_dict_neighbours:
+                    self.dfs_recursive(neighbour.id, visit)
+
+            # # check to see if starting node contains data
+            # if node is not None:
+            #     # Visit this node's data with given function
+            #     visit(node.data)
+            #     # Traverse left subtree, if it exists
+            #     self._traverse_pre_order_recursive(node.left, visit)
+            #     # Traverse right subtree, if it exists
+            #     self._traverse_pre_order_recursive(node.right, visit)
+    
+    def _pre_order_dfs_iterative(self, vertex_a: str, vertex_b: str):
+            """
+                Executes a pre-order depth first search on the given graph.
+
+                Args
+                    vertex_a: start vertex
+                    vertex_b: to vertex
+
+                Returns
+
+            """
+
             # Stack to keep track of verticies
-            stack = LinkedStack()
+            stack = LinkedStack(vertex_a)
+
+            # Keeping track of visits
+            visited = set()
+            # add vertex_a to set
+            visited.add(vertex_a)
+
+            while not stack.is_empty():
+                vertex = stack.pop()
+                print(vertex)
 
             # check to see if starting node contains data
             if node is not None:
