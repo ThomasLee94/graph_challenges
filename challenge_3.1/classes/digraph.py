@@ -102,12 +102,12 @@ class Digraph(object):
 
     def min_weight_path(self, vertex_a: str, vertex_b: str) -> object:
         """ 
-        An implementation of Dijkstra greedy algorithm, it will return the shortest weighted 
-        path from vertex_a to vertex_b. 
+            An implementation of Dijkstra greedy algorithm, it will return the shortest weighted 
+            path from vertex_a to vertex_b. 
 
-        Args
-            vertex_a: start vertex
-            vertex_b: end vertex
+            Args
+                vertex_a: start vertex
+                vertex_b: end vertex
         """
 
         # keep track of verticies
