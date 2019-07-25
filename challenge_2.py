@@ -1,16 +1,19 @@
-from util.read_data import graph_from_file, string_to_tuple
+from classes.util.read_data import graph_from_file, string_to_tuple
 from classes.graph import Graph
 
 def challenge_2(file: str, vertex_a: str, vertex_b: str)->str:
-    _, verticies, edges_str = graph_from_file(file)
+    graph_type, verticies, edges_str = graph_from_file(file)
+
+    # Create graph depending on type
+    if graph_type == "G":
+        graph = Graph()
+    if graph_type == "D":
+        graph = Digraph()
     
     # creating edge_list iterable 
     edge_list = list()
     for edge in edges_str:
         edge_list.append(string_to_tuple(edge))
-
-    # create graph
-    graph = Graph()
 
     # add verticies
     for vertex in verticies:
