@@ -3,6 +3,7 @@
 
 from classes.vertex import Vertex
 from classes.queue import LinkedQueue
+import math
 
 class Graph(object):
     """ essential facts and functionalities of an undirected graph"""
@@ -181,5 +182,4 @@ class Graph(object):
         
         while not queue.is_empty():
             #  vertex_ = [for vertex in queue with min distane[v]]
-    
-   
+            pass

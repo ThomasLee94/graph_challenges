@@ -1,5 +1,6 @@
 from classes.util.read_data import graph_from_file, string_to_tuple
 from classes.digraph import Digraph
+from classes.graph import Graph
 
 def challenge_1(file: str) -> str:
     graph_type, verticies, edges_str = graph_from_file(file)
