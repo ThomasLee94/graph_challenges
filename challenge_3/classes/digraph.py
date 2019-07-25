@@ -4,6 +4,8 @@
 
 from classes.vertex import Vertex
 from classes.stack import LinkedStack
+from classes.queue import LinkedQueue
+import math
 
 class Digraph(object):
     """ essential facts and functionalities of a directed graph"""
@@ -51,7 +53,7 @@ class Digraph(object):
             raise ValueError("This vertex does not exist in graph!")
 
         if vertex_b not in self.vert_dict.keys():
-            # raise error if vertex_b does not exist
+            # raise error if ve rtex_b does not exist
             raise ValueError("This vertex does not exist in graph!")
 
         vertex_a_obj = self.vert_dict[vertex_a]
@@ -97,5 +99,21 @@ class Digraph(object):
             # Catch all
             return False
 
-    
-    
+    def min_weight_path(self, vertex_a: str, vertex_b: str):
+        """ 
+        An implementation of Dijkstra greedy algorithm, it will return the shortest weighted 
+        path from vertex_a to vertex_b. 
+
+        Args
+            vertex_a: start vertex
+            vertex_b: end vertex
+        """
+
+        infinity = math.inf
+        # distance dict
+        distance = {
+            vertex_a: 0
+        }
+
+        for vertex in self.vert_dict:
+            distance[vertex] = infinity
