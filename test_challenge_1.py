@@ -4,8 +4,6 @@ from classes.vertex import Vertex
 from classes.digraph import Digraph
 import unittest
 
-import unittest
-
 class VertexTest(unittest.TestCase):
 
     def test_init(self):
