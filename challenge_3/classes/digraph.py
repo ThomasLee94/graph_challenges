@@ -3,6 +3,7 @@
 # essential facts and functionalities of graphs 
 
 from classes.vertex import Vertex
+# iterative DFS
 from classes.stack import LinkedStack
 from classes.queue import LinkedQueue
 import math
@@ -99,7 +100,7 @@ class Digraph(object):
             # Catch all
             return False
 
-    def min_weight_path(self, vertex_a: str, vertex_b: str):
+    def min_weight_path(self, vertex_a: str, vertex_b: str) -> object:
         """ 
         An implementation of Dijkstra greedy algorithm, it will return the shortest weighted 
         path from vertex_a to vertex_b. 
@@ -109,11 +110,21 @@ class Digraph(object):
             vertex_b: end vertex
         """
 
+        # keep track of verticies
+        queue = LinkedQueue()
+
         infinity = math.inf
         # distance dict
         distance = {
             vertex_a: 0
         }
 
+        # loop through all verticies in graph
         for vertex in self.vert_dict:
-            distance[vertex] = infinity
+            if vertex != vertex_a:
+                # make path for vertex infinity by default
+                distance[vertex] = infinity
+            queue.enqueue(vertex)
+        
+        while not queue.is_empty():
+            #  vertex_ = [for vertex in queue with min distane[v]]
