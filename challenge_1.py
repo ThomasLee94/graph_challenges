@@ -6,10 +6,6 @@ import argparse
 def challenge_1(file: str) -> Graph:
     graph_type, verticies, edges_str = graph_from_file(file)
 
-    print(graph_type)
-    print(verticies)
-    print(edges_str)
-
     # Create graph depending on type
     if graph_type == "G":
         graph = Graph()

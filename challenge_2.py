@@ -1,6 +1,7 @@
-from classes.util.read_data import graph_from_file, string_to_tuple
-from classes.graph import Graph
+from classes.util.read_data import graph_from_file
+from classes.graph import Graph, fill
 from classes.digraph import Digraph
+import argparse
 
 def challenge_2(file: str, vertex_a: str, vertex_b: str) -> Graph:
     graph_type, verticies, edges_str = graph_from_file(file)
@@ -11,18 +12,8 @@ def challenge_2(file: str, vertex_a: str, vertex_b: str) -> Graph:
     if graph_type == "D":
         graph = Digraph()
     
-    # creating edge_list iterable 
-    edge_list = list()
-    for edge in edges_str:
-        edge_list.append(string_to_tuple(edge))
-
-    # add verticies
-    for vertex in verticies:
-        graph.add_vertex(vertex)
-    
-    # add edges
-    for tuple_ in edge_list:
-        graph.add_edge(tuple_[0], tuple_[1])
+    # fill graph instance with edges and verticies
+    fill(graph, verticies, edges_str)
     
     # getting parent dict
     dict_ = graph.breadth_first_search(vertex_a,vertex_b)
