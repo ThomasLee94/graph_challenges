@@ -125,5 +125,61 @@ class Graph(object):
                     child_parent_path[neighbour.id] = vertex
                     
         return child_parent_path 
+
+    def dfs_recursive(self, vertex_a: str, vertex_b: str, visited, custom_func)->bool:
+            """
+                Executes a pre-order depth first search on the given graph.
+                Args
+                    vertex_a: start vertex
+                    vertex_b: to vertex
+                    visited: Set method to keep track of visited verticies. 
+                Returns
+                    If vertex_b is in any branch from vertex_a: return True
+                    If vertex_b not in any branch from vertex_a: return False 
+            """
+
+            if vertex_a in self.vert_dict and vertex_a not in visited:
+                # if vertex_b is found
+                if vertex_a == vertex_b:
+                    return True
+                # Add vertex_a to set
+                visited.add(vertex_a)
+                # execute custome_func:
+                custom_func(vertex_a)
+                # add neighbours of vertex_a in stack
+                for neighbour in self.vert_dict[vertex_a].adj_dict_neighbours:
+                    # visit neighbours recursively
+                    return self.dfs_recursive(neighbour.id, vertex_b, visited, custom_func)
+            
+            # Catch all
+            return False
+    
+    def min_weight_path(self, vertex_a: str, vertex_b: str) -> object:
+        """ 
+            An implementation of Dijkstra greedy algorithm, it will return the shortest weighted 
+            path from vertex_a to vertex_b. 
+            Args
+                vertex_a: start vertex
+                vertex_b: end vertex
+        """
+
+        # keep track of verticies
+        queue = LinkedQueue()
+
+        infinity = math.inf
+        # distance dict
+        distance = {
+            vertex_a: 0
+        }
+
+        # loop through all verticies in graph
+        for vertex in self.vert_dict:
+            if vertex != vertex_a:
+                # make path for vertex infinity by default
+                distance[vertex] = infinity
+            queue.enqueue(vertex)
+        
+        while not queue.is_empty():
+            #  vertex_ = [for vertex in queue with min distane[v]]
     
    
