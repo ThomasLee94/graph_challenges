@@ -2,7 +2,7 @@ from classes.util.read_data import graph_from_file, string_to_tuple
 from classes.graph import Graph
 from classes.digraph import Digraph
 
-def challenge_3(file: str, vertex_a: str, vertex_b: str):
+def challenge_3(file: str, vertex_a: str, vertex_b: str) -> Graph:
     graph_type, verticies, edges_str = graph_from_file(file)
 
     # Create graph depending on type

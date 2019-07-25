@@ -1,8 +1,8 @@
 from classes.util.read_data import graph_from_file, string_to_tuple
 from classes.graph import Graph
-from classes.graph import Digraph
+from classes.digraph import Digraph
 
-def challenge_2(file: str, vertex_a: str, vertex_b: str)->str:
+def challenge_2(file: str, vertex_a: str, vertex_b: str) -> Graph:
     graph_type, verticies, edges_str = graph_from_file(file)
 
     # Create graph depending on type

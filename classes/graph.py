@@ -1,11 +1,10 @@
-
-# !python
-
 from classes.vertex import Vertex
 from classes.queue import LinkedQueue
+# from classes.util.read_data import string_to_tuple
+import classes.util.read_data as read_data
 import math
 
-class Graph(object):
+class Graph(Vertex):
     """ essential facts and functionalities of an undirected graph"""
 
     def __init__(self):
@@ -183,3 +182,23 @@ class Graph(object):
         while not queue.is_empty():
             #  vertex_ = [for vertex in queue with min distane[v]]
             pass
+    
+def fill(graph: Graph, verticies: [str], edges_and_weight: [str]) -> Graph:
+    """
+        Fills graph based on input verticies and edges and optional weights 
+    """
+
+    # creating edge_list iterable 
+    edge_list = list()
+    for edge in edges_and_weight:
+        edge_list.append(read_data.string_to_tuple(edge))
+
+    # add verticies
+    for vertex in verticies:
+        graph.add_vertex(vertex)
+    
+    # add edges and weights
+    for tuple_ in edge_list:
+        graph.add_edge(tuple_[0], tuple_[1], int(tuple_[2]))
+    
+    return graph

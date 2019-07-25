@@ -1,9 +1,14 @@
-from classes.util.read_data import graph_from_file, string_to_tuple
+from classes.util.read_data import graph_from_file
+from classes.graph import Graph, fill
 from classes.digraph import Digraph
-from classes.graph import Graph
+import argparse
 
-def challenge_1(file: str) -> str:
+def challenge_1(file: str) -> Graph:
     graph_type, verticies, edges_str = graph_from_file(file)
+
+    print(graph_type)
+    print(verticies)
+    print(edges_str)
 
     # Create graph depending on type
     if graph_type == "G":
@@ -11,18 +16,8 @@ def challenge_1(file: str) -> str:
     if graph_type == "D":
         graph = Digraph()
     
-    # creating edge_list iterable 
-    edge_list = list()
-    for edge in edges_str:
-        edge_list.append(string_to_tuple(edge))
-
-    # add verticies
-    for vertex in verticies:
-        graph.add_vertex(vertex)
-    
-    # add edges and weights
-    for tuple_ in edge_list:
-        graph.add_edge(tuple_[0], tuple_[1], int(tuple_[2]))
+    # fill graph instance with edges and verticies
+    fill(graph, verticies, edges_str)
     
     # print vertices
     print(f"Verticies: {len(graph.get_vertices())}")
