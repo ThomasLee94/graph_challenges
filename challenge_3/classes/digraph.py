@@ -81,7 +81,7 @@ class Digraph(object):
                     If vertex_b not in any branch from vertex_a: return False 
             """
 
-            if vertex_a is not None and vertex_a not in visited:
+            if vertex_a in self.vert_dict and vertex_a not in visited:
                 # if vertex_b is found
                 if vertex_a == vertex_b:
                     return True
@@ -98,36 +98,36 @@ class Digraph(object):
             return False
 
     
-    def dfs_iterative(self, vertex_a: str, vertex_b: str):
-            """
-                Executes a pre-order depth first search on the given graph.
+    # def dfs_iterative(self, vertex_a: str, vertex_b: str):
+    #         """
+    #             Executes a pre-order depth first search on the given graph.
 
-                Args
-                    vertex_a: start vertex
-                    vertex_b: to vertex
+    #             Args
+    #                 vertex_a: start vertex
+    #                 vertex_b: to vertex
 
-                Returns
+    #             Returns
 
-            """
+    #         """
 
-            # Stack to keep track of verticies
-            stack = LinkedStack(vertex_a)
+    #         # Stack to keep track of verticies
+    #         stack = LinkedStack(vertex_a)
 
-            # Keeping track of visits
-            visited = set()
-            # add vertex_a to set
-            visited.add(vertex_a)
+    #         # Keeping track of visits
+    #         visited = set()
+    #         # add vertex_a to set
+    #         visited.add(vertex_a)
 
-            while not stack.is_empty():
-                vertex = stack.pop()
-                print(vertex)
+    #         while not stack.is_empty():
+    #             vertex = stack.pop()
+    #             print(vertex)
 
-            # check to see if starting node contains data
-            if node is not None:
-                # Visit this node's data with given function
-                visit(node.data)
+    #         # check to see if starting node contains data
+    #         if node is not None:
+    #             # Visit this node's data with given function
+    #             visit(node.data)
 
-                # Traverse left subtree, if it exists
-                self._traverse_pre_order_recursive(node.left, visit)
-                # Traverse right subtree, if it exists
-                self._traverse_pre_order_recursive(node.right, visit)
+    #             # Traverse left subtree, if it exists
+    #             self._traverse_pre_order_recursive(node.left, visit)
+    #             # Traverse right subtree, if it exists
+    #             self._traverse_pre_order_recursive(node.right, visit)
