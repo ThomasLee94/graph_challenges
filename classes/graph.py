@@ -126,7 +126,7 @@ class Graph(Vertex):
                     
         return child_parent_path 
 
-    def dfs_recursive(self, vertex_a: str, vertex_b: str, visited, custom_func)->bool:
+    def dfs_recursive(self, vertex_a: str, vertex_b: str, visited, custom_func)->(bool,[str]):
             """
                 Executes a pre-order depth first search on the given graph.
                 Args
@@ -134,25 +134,32 @@ class Graph(Vertex):
                     vertex_b: to vertex
                     visited: Set method to keep track of visited verticies. 
                 Returns
-                    If vertex_b is in any branch from vertex_a: return True
-                    If vertex_b not in any branch from vertex_a: return False 
+                    If vertex_b is in any branch from vertex_a: return (True, verticies_list)
+                    If vertex_b not in any branch from vertex_a: return (False, verticies_list) 
             """
+            
+            # list to store visitied verticies
+            verticies = list()
 
             if vertex_a in self.vert_dict and vertex_a not in visited:
                 # if vertex_b is found
                 if vertex_a == vertex_b:
-                    return True
+                    return (True, verticies) 
                 # Add vertex_a to set
                 visited.add(vertex_a)
                 # execute custome_func:
                 custom_func(vertex_a)
+                # Add vertex to output list
+                verticies.append(vertex_a)
                 # add neighbours of vertex_a in stack
                 for neighbour in self.vert_dict[vertex_a].adj_dict_neighbours:
                     # visit neighbours recursively
                     return self.dfs_recursive(neighbour.id, vertex_b, visited, custom_func)
             
+            print(f"hello {verticies}")
+            
             # Catch all
-            return False
+            return (False, verticies)
     
     def min_weight_path(self, vertex_a: str, vertex_b: str) -> object:
         """ 

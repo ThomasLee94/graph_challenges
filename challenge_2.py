@@ -36,4 +36,4 @@ def challenge_2(file: str, vertex_a: str, vertex_b: str) -> Graph:
     print(f"Vertices in shortest path: {output}")
     print(f"Number of edges in shortest path: {len(output)-1}")
     
-challenge_2("graph_data.txt", "1", "5")
+challenge_2("graph_data_2.txt", "1", "5")

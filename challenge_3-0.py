@@ -17,6 +17,8 @@ def challenge_3(file: str, vertex_a: str, vertex_b: str) -> Graph:
 
     # using recursion, set used for dfs
     set_ = set()
-    print(f"There exists a path between vertex {vertex_a} and {vertex_b}: {graph.dfs_recursive(vertex_a, vertex_b, set_, print)}")
+    list_ = graph.dfs_recursive(vertex_a, vertex_b, set_, print)
+    print(f"There exists a path between vertex {vertex_a} and {vertex_b}: {list_[0]}")
+    print(f"Vertices in the path: {list_[1]}")
 
-challenge_3("graph_data.txt", "1", "5")
+challenge_3("graph_data_3.txt", "1", "5")
