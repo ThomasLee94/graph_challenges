@@ -128,11 +128,12 @@ class Graph(Vertex):
 
     def dfs_recursive(self, vertex_a: str, vertex_b: str, visited_list: [str], visited_set, custom_func)->(bool,[str]):
             """
-                Executes a pre-order depth first search on the given graph.
+                Executes a depth first search on the given graph.
                 Args
                     vertex_a: start vertex
                     vertex_b: to vertex
-                    visited: Set method to keep track of visited verticies in order.
+                    visited_list: keeps track of visited verticies in order of traversal
+                    visited: set method to keep track of visited verticies.
                     custom_func: execute custom function on vertex
                 Returns
                     If vertex_b is in any branch from vertex_a: return (True, verticies_list)
