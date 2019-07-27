@@ -1,7 +1,7 @@
 from classes.vertex import Vertex
 from classes.queue import LinkedQueue
-# from classes.util.read_data import string_to_tuple
 import classes.util.read_data as read_data
+import heapq as pqueue
 import math
 
 class Graph(Vertex):
@@ -33,7 +33,7 @@ class Graph(Vertex):
             # increment number of verticles
             self.num_vertices += 1
         return self.vert_dict[key]
-
+# from classes.util.read_data import string_to_tuple
     def get_vertex(self, key: str)->object:
         """return the vertex if it exists"""
 
@@ -132,7 +132,7 @@ class Graph(Vertex):
                 Args
                     vertex_a: start vertex
                     vertex_b: to vertex
-                    visited: Set method to keep track of visited verticies. 
+                    visited: Set method to keep track of visited verticies in order.
                     custom_func: execute custom function on vertex
                 Returns
                     If vertex_b is in any branch from vertex_a: return (True, verticies_list)
@@ -164,35 +164,43 @@ class Graph(Vertex):
             Args
                 vertex_a: start vertex
                 vertex_b: end vertex
+            Returns
+
         """
 
-        # keep track of verticies with priority queue
-        queue = LinkedQueue()
+        # keep track of verticies with priority heap queue
+        queue = pqueue
 
         infinity = math.inf
+
         # distance dict
         distance = {
             vertex_a: 0
         }
+
+        # previous dict
+        previous = dict()
 
         # loop through all verticies in graph
         for vertex in self.vert_dict:
             if vertex != vertex_a:
                 # make path for vertex infinity by default
                 distance[vertex] = infinity
-            queue.enqueue(vertex)
-        
-        while not queue.is_empty():
-            #  vertex_ = [for vertex in queue with min distane[v]]
-            pass
+            queue.heappush(vertex)
+
+        # while queue is not empty
+        while queue:
+            # dequeue smallest distance[vertex]
+            vertex = queue.heappop
+            # looping through neighbours of vertex
+            for neighbour in self.vert_dict[vertex].adj_dict_neighbours:
+                pass
+                # alt = distsance[vertex] + 
     
 def fill(graph: Graph, verticies: [str], edges_and_weight: [str]) -> Graph:
     """
         Fills graph based on input verticies and edges and optional weights 
     """
-
-    print(verticies)
-    print(edges_and_weight)
 
     # creating edge_list iterable 
     edge_list = list()
