@@ -195,6 +195,9 @@ def fill(graph: Graph, verticies: [str], edges_and_weight: [str]) -> Graph:
         Fills graph based on input verticies and edges and optional weights 
     """
 
+    print(verticies)
+    print(edges_and_weight)
+
     # creating edge_list iterable 
     edge_list = list()
     for edge in edges_and_weight:
@@ -206,6 +209,10 @@ def fill(graph: Graph, verticies: [str], edges_and_weight: [str]) -> Graph:
     
     # add edges and weights
     for tuple_ in edge_list:
-        graph.add_edge(tuple_[0], tuple_[1], int(tuple_[2]))
+        # if weight was not given, default to 0 
+        if len(tuple_) == 2:
+            graph.add_edge(tuple_[0], tuple_[1], 0)
+        else:
+            graph.add_edge(tuple_[0], tuple_[1], tuple_[2])
     
     return graph

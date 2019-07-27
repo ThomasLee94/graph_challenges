@@ -27,4 +27,4 @@ def challenge_1(file: str) -> Graph:
         for neighbour, weight in vert.adj_dict_neighbours.items():
             print(f"({vert.id}, {neighbour.id}, {weight})")
 
-challenge_1("graph_data.txt")
+challenge_1("graph_data_1.txt")
