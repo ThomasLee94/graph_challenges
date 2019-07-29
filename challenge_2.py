@@ -4,15 +4,7 @@ from classes.digraph import Digraph
 import argparse
 
 def challenge_2(file: str, vertex_a: str, vertex_b: str) -> Graph:
-    graph_type, verticies, edges_str = graph_from_file(file)
-
-    # Create graph depending on type
-   if graph_type == "G":
-        graph = Graph()
-    elif graph_type == "D":
-        graph = Digraph()
-    else:
-        raise ValueError("Graph type is not specified!")
+    graph, verticies, edges_str = graph_from_file(file)
     
     # fill graph instance with edges and verticies
     fill(graph, verticies, edges_str)

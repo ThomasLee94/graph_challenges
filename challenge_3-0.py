@@ -4,15 +4,7 @@ from classes.digraph import Digraph
 import argparse
 
 def challenge_3(file: str, vertex_a: str, vertex_b: str) -> Graph:
-    graph_type, verticies, edges_str = graph_from_file(file)
-
-    # Create graph depending on type
-    if graph_type == "G":
-        graph = Graph()
-    elif graph_type == "D":
-        graph = Digraph()
-    else:
-        raise ValueError("Graph type is not specified!")
+    graph, verticies, edges_str = graph_from_file(file)
     
     # fill graph instance with edges and verticies
     fill(graph, verticies, edges_str)
@@ -25,4 +17,4 @@ def challenge_3(file: str, vertex_a: str, vertex_b: str) -> Graph:
     print(f"There exists a path between vertex {vertex_a} and {vertex_b}: {tuple_[0]}")
     print(f"Vertices in the path: {tuple_[1]}")
 
-challenge_3("graph_data_3.txt", "1", "5")
+challenge_3("graph_data_3-0.txt", "1", "5")
