@@ -9,8 +9,10 @@ def challenge_1(file: str) -> Graph:
     # Create graph depending on type
     if graph_type == "G":
         graph = Graph()
-    if graph_type == "D":
+    elif graph_type == "D":
         graph = Digraph()
+    else:
+        raise ValueError("Graph type is not specified!")
     
     # fill graph instance with edges and verticies
     fill(graph, verticies, edges_str)
