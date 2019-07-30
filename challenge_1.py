@@ -21,7 +21,7 @@ def challenge_1(file: str) -> Graph:
         for neighbour, weight in vert.adj_dict_neighbours.items():
             print(f"({vert.id}, {neighbour.id}, {weight})")
 
-def cl_args():
+def cl_args() -> argparse.Namespace:
     """
         function to execute command line arguments
 
