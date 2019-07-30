@@ -1,11 +1,5 @@
 ## To run challenges
 
 ```
-cd <CHALLENGE_DIR>
+python <CHALLENGE_NUM.py> <DATA_FILE.txt> 
 ```
-
-```
-python3 <CHALLENGE_NUM>.py
-```
-
-data will already be read, no need to specify data file.

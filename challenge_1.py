@@ -21,4 +21,23 @@ def challenge_1(file: str) -> Graph:
         for neighbour, weight in vert.adj_dict_neighbours.items():
             print(f"({vert.id}, {neighbour.id}, {weight})")
 
-challenge_1("graph_data_1.txt")
+def cl_args():
+    """
+        function to execute command line arguments
+
+        Returns
+            parsed objects 
+    """
+
+    parser = argparse.ArgumentParser(description="Create graph from text file!")
+    parser.add_argument("file_name", help="Name of data in text file")
+    args = parser.parse_args()
+
+    return args
+
+if __name__ == "__main__":
+    args = cl_args()
+
+    if not args.file_name:
+        raise Exception("Text file was not provided!")
+    challenge_1(args.file_name)
