@@ -1,3 +1,5 @@
+# Graph Theory
+![GitHub repo size](https://img.shields.io/github/repo-size/ThomasLee94/graph_challenges.svg?style=plastic)
 ## To run challenges
 
 ```
