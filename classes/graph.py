@@ -166,37 +166,36 @@ class Graph(Vertex):
                 vertex_a: start vertex
                 vertex_b: end vertex
             Returns
-
         """
-
         # keep track of verticies with priority heap queue
         queue = pqueue
-
         infinity = math.inf
-
         # distance dict
         distance = {
             vertex_a: 0
         }
-
         # previous dict
         previous = dict()
-
         # loop through all verticies in graph
         for vertex in self.vert_dict:
             if vertex != vertex_a:
                 # make path for vertex infinity by default
                 distance[vertex] = infinity
             queue.heappush(vertex)
-
         # while queue is not empty
         while queue:
             # dequeue smallest distance[vertex]
-            vertex = queue.heappop
+            vertex = pqueue.heappop()
+            vertex_obj = self.vert_dict[vertex]
             # looping through neighbours of vertex
-            for neighbour in self.vert_dict[vertex].adj_dict_neighbours:
-                pass
-                # alt = distsance[vertex] + 
+            for neighbour in vertex_obj.adj_dict_neighbours:
+                # finding alternate distances
+                alt = distance[vertex] + vertex_obj.neighbours[neighbour]
+                if alt < distance[neighbour]:
+                    distance[neighbour] = alt
+                    previous[neighbour] = vertex
+        
+        return distance, previous 
     
 def fill(graph: Graph, verticies: [str], edges_and_weight: [str]) -> Graph:
     """
