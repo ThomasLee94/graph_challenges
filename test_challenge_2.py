@@ -1,7 +1,7 @@
-#!python
-
+from classes.util.read_data import graph_from_file
+from classes.graph import Graph, fill
+from classes.digraph import Digraph
 from classes.vertex import Vertex
-from classes.graph import Graph
 import unittest
 
 class VertexTest(unittest.TestCase):
@@ -82,7 +82,14 @@ class GraphTest(unittest.TestCase):
     def test_shortest_path(self):
         graph = Graph()
         verticies = ["1","2","3","4","5"]
-        edges = [("1","2"),("1","4"),("2","3"),("2","4"),("2","5"),("3","5")]
+        edges = [
+            ("1","2"),
+            ("1","4"),
+            ("2","3"),
+            ("2","4"),
+            ("2","5"),
+            ("3","5")
+            ]
 
         # add verticies to path
         for vertex in verticies:

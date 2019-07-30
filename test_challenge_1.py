@@ -1,7 +1,7 @@
-#!python
-
-from classes.vertex import Vertex
+from classes.util.read_data import graph_from_file
+from classes.graph import Graph, fill
 from classes.digraph import Digraph
+from classes.vertex import Vertex
 import unittest
 
 class VertexTest(unittest.TestCase):
