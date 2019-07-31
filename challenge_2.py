@@ -10,7 +10,7 @@ def challenge_2(file: str, vertex_a: str, vertex_b: str) -> Graph:
     fill(graph, verticies, edges_str)
     
     # getting parent dict
-    dict_ = graph.breadth_first_search(vertex_a,vertex_b)
+    dict_ = graph.breadth_first_search(vertex_a, vertex_b)
 
     parent = dict_[vertex_b]
     output = list()
@@ -35,11 +35,11 @@ def cl_args() -> argparse.Namespace:
         function to execute command line arguments
 
         Returns
-            parsed objects 
+            parsed objects
     """
 
-    parser = argparse.ArgumentParser(description="Create graph from text file!")
-    parser.add_argument("file_name", help="Name of data in text file", type=str)
+    parser = argparse.ArgumentParser(description="Create graph from text file")
+    parser.add_argument("file_name", help="text data file", type=str)
     parser.add_argument("vertex_a", help="start vertex", type=str)
     parser.add_argument("vertex_b", help="end vertex", type=str)
     args = parser.parse_args()
