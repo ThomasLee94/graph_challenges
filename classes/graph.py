@@ -89,8 +89,9 @@ class Graph(Vertex):
 
         # Check if verticies exists in graph
         if vertex_a not in self.vert_dict:
-            if vertex_b not in self.vert_dict:
-                raise ValueError("This vertex is not in graph!")
+            raise ValueError(f"vertex {vertex_a} is not in graph!")
+        if vertex_b not in self.vert_dict:
+            raise ValueError(f"vertex {vertex_b} is not in graph!")
 
         # Queue to keep track of verticies, enqueue vertex_a
         queue = LinkedQueue(vertex_a)
@@ -140,6 +141,12 @@ class Graph(Vertex):
                     If vertex_b not in any branch from vertex_a: return (False, verticies_list) 
             """
 
+            # Check if verticies exists in graph
+            if vertex_a not in self.vert_dict:
+                raise ValueError(f"vertex {vertex_a} is not in graph!")
+            if vertex_b not in self.vert_dict:
+                raise ValueError(f"vertex {vertex_b} is not in graph!")
+
             if vertex_a in self.vert_dict and vertex_a not in visited_set:
                 # Add vertex_a to set
                 visited_set.add(vertex_a)
@@ -167,6 +174,13 @@ class Graph(Vertex):
                 vertex_b: end vertex
             Returns
         """
+
+        # Check if verticies exists in graph
+        if vertex_a not in self.vert_dict:
+            raise ValueError(f"vertex {vertex_a} is not in graph!")
+        if vertex_b not in self.vert_dict:
+            raise ValueError(f"vertex {vertex_b} is not in graph!")
+            
         # keep track of verticies with priority queue
         pqueue = PriorityQueue() 
         # infinity
@@ -199,7 +213,7 @@ class Graph(Vertex):
                 print(vertex_obj.neighbours[neighbour])
                 print(type(distance[vertex]))
                 print(type(vertex_obj.neighbours[neighbour]))
-                
+
                 alt = distance[vertex] + vertex_obj.neighbours[neighbour]
                 if alt < distance[neighbour]:
                     distance[neighbour] = alt
