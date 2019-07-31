@@ -18,7 +18,7 @@ def challenge_1(file: str) -> Graph:
     # print edge list
     for vertex in graph.vert_dict:
         vert = graph.get_vertex(vertex) 
-        for neighbour, weight in vert.adj_dict_neighbours.items():
+        for neighbour, weight in vert.neighbours.items():
             print(f"({vert.id}, {neighbour.id}, {weight})")
 
 def cl_args() -> argparse.Namespace:

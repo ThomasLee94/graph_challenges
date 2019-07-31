@@ -11,7 +11,7 @@ class VertexTest(unittest.TestCase):
         vertex_obj = Vertex(vertex_a)
         # checking if vertex_obj is saved properly
         self.assertIsInstance(vertex_obj.id, str) 
-        self.assertEqual(len(vertex_obj.adj_dict_neighbours), 0) 
+        self.assertEqual(len(vertex_obj.neighbours), 0) 
 
     def test_add_neighbour(self):
         # vertex_a is pointing to vertex_b with a weight of 3, "A" -> "B"
@@ -21,8 +21,8 @@ class VertexTest(unittest.TestCase):
         vertex_a_obj = Vertex(vertex_a)
         vertex_b_obj = Vertex(vertex_b)
         vertex_a_obj.add_neighbour(vertex_b_obj, weight)
-        self.assertEqual(len(vertex_a_obj.adj_dict_neighbours), 1) 
-        self.assertEqual(vertex_a_obj.adj_dict_neighbours[vertex_b_obj], weight)
+        self.assertEqual(len(vertex_a_obj.neighbours), 1) 
+        self.assertEqual(vertex_a_obj.neighbours[vertex_b_obj], weight)
 
     def test_get_neighbours(self):
         vertex_a = "A"
@@ -76,8 +76,8 @@ class GraphTest(unittest.TestCase):
         vertex_b_obj = graph.vert_dict[vertex_b]
         
         # check if vertex_a & vertex_b are neighbours of each other.
-        self.assertIn(vertex_a_obj, vertex_b_obj.adj_dict_neighbours)
-        self.assertIn(vertex_b_obj, vertex_a_obj.adj_dict_neighbours)
+        self.assertIn(vertex_a_obj, vertex_b_obj.neighbours)
+        self.assertIn(vertex_b_obj, vertex_a_obj.neighbours)
 
     def test_shortest_path(self):
         graph = Graph()

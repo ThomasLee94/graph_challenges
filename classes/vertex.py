@@ -6,23 +6,23 @@ class Vertex(object):
         """
         initialise a vertex and its neighbours.
         """
-        # adj_dict_neighbours = {
+        # neighbours = {
         #   vertex_obj: weight
         # }
 
         self.id = vertex
-        self.adj_dict_neighbours = {}
+        self.neighbours = {}
 
     def add_neighbour(self, vertex: object, weight=0):
         """
         add a neighbour along a weighted edge
         """
 
-        if vertex not in self.adj_dict_neighbours.keys():
+        if vertex not in self.neighbours.keys():
             # if vertex does not exist, append tuple
-            self.adj_dict_neighbours[vertex] = weight
+            self.neighbours[vertex] = int(weight)
 
     def get_neighbours(self) -> dict:
         """returns all vertices (nodes) connected to this vertex (node)"""
 
-        return self.adj_dict_neighbours
+        return self.neighbours

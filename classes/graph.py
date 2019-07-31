@@ -1,7 +1,7 @@
 from classes.vertex import Vertex
 from classes.queue import LinkedQueue
 import classes.util.read_data as read_data
-import heapq as pqueue
+from classes.priority_queue import PriorityQueue
 import math
 
 class Graph(Vertex):
@@ -72,7 +72,7 @@ class Graph(Vertex):
     def get_edges(self, vertex: str) -> [str]:
         """ Returns all of the edges of given vertex """
         
-        return self.vert_dict[vertex].adj_dict_neighbours
+        return self.vert_dict[vertex].neighbours
             
     
     def breadth_first_search(self, vertex_a: str, vertex_b: str)-> object:
@@ -113,7 +113,7 @@ class Graph(Vertex):
             vertex = queue.dequeue()
             
             # sorting keys in adjacency list to evaluate vertex.id
-            keys = self.vert_dict[vertex].adj_dict_neighbours.keys()
+            keys = self.vert_dict[vertex].neighbours.keys()
             sorted_keys = sorted(keys, key = lambda vertex: vertex.id)
             # looping through neighbours
             for neighbour in sorted_keys:
@@ -151,7 +151,7 @@ class Graph(Vertex):
                 if vertex_a == vertex_b:
                     return (True, visited_list) 
                 # add neighbours of vertex_a in stack
-                for neighbour in self.vert_dict[vertex_a].adj_dict_neighbours:
+                for neighbour in self.vert_dict[vertex_a].neighbours:
                     # visit neighbours recursively
                     return self.dfs_recursive(neighbour.id, vertex_b, visited_list, visited_set, custom_func)
             
@@ -167,8 +167,9 @@ class Graph(Vertex):
                 vertex_b: end vertex
             Returns
         """
-        # keep track of verticies with priority heap queue
-        queue = pqueue
+        # keep track of verticies with priority queue
+        pqueue = PriorityQueue() 
+        # infinity
         infinity = math.inf
         # distance dict
         distance = {
@@ -176,20 +177,29 @@ class Graph(Vertex):
         }
         # previous dict
         previous = dict()
+
         # loop through all verticies in graph
         for vertex in self.vert_dict:
             if vertex != vertex_a:
                 # make path for vertex infinity by default
                 distance[vertex] = infinity
-            queue.heappush(vertex)
+            vertex_obj = self.vert_dict[vertex]
+            # enqueueing vertex with weight
+            pqueue.push(vertex, distance[vertex])
+
         # while queue is not empty
-        while queue:
+        while pqueue:
             # dequeue smallest distance[vertex]
-            vertex = pqueue.heappop()
+            vertex = pqueue.pop()
             vertex_obj = self.vert_dict[vertex]
             # looping through neighbours of vertex
-            for neighbour in vertex_obj.adj_dict_neighbours:
+            for neighbour in vertex_obj.neighbours:
                 # finding alternate distances
+                print(distance[vertex])
+                print(vertex_obj.neighbours[neighbour])
+                print(type(distance[vertex]))
+                print(type(vertex_obj.neighbours[neighbour]))
+                
                 alt = distance[vertex] + vertex_obj.neighbours[neighbour]
                 if alt < distance[neighbour]:
                     distance[neighbour] = alt

@@ -11,7 +11,7 @@ class VertexTest(unittest.TestCase):
         vertex_obj = Vertex(vertex_a)
         # checking if vertex_obj is saved properly
         self.assertIsInstance(vertex_obj.id, str) 
-        self.assertEqual(len(vertex_obj.adj_dict_neighbours), 0) 
+        self.assertEqual(len(vertex_obj.neighbours), 0) 
 
     def test_add_neighbour(self):
         # vertex_a is pointing to vertex_b with a weight of 3, "A" -> "B"
@@ -21,8 +21,8 @@ class VertexTest(unittest.TestCase):
         vertex_a_obj = Vertex(vertex_a)
         vertex_b_obj = Vertex(vertex_b)
         vertex_a_obj.add_neighbour(vertex_b_obj, weight)
-        self.assertEqual(len(vertex_a_obj.adj_dict_neighbours), 1) 
-        self.assertEqual(vertex_a_obj.adj_dict_neighbours[vertex_b_obj], weight)
+        self.assertEqual(len(vertex_a_obj.neighbours), 1) 
+        self.assertEqual(vertex_a_obj.neighbours[vertex_b_obj], weight)
 
     def test_get_neighbours(self):
         vertex_a = "A"
@@ -75,7 +75,7 @@ class DigraphTest(unittest.TestCase):
         # test for correct adjacency list (neighbours)
         for vertex in graph.vert_dict:
             vert = graph.get_vertex(vertex)
-            for neighbour, weight_ in vert.adj_dict_neighbours.items():
+            for neighbour, weight_ in vert.neighbours.items():
                 self.assertEqual(vertex_b, neighbour.id)
                 self.assertEqual(weight, weight_)
         
