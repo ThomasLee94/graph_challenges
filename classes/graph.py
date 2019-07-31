@@ -201,6 +201,8 @@ class Graph(Vertex):
         distance = {vertex_a: 0}
         # previous dict
         previous = dict()
+        # min spanning tree
+        min_span_tree = [vertex_a]
 
         # loop through all verticies in graph
         for vertex in self.vert_dict:
@@ -215,21 +217,21 @@ class Graph(Vertex):
         while pqueue:
             # dequeue smallest distance[vertex]
             vertex = pqueue.pop()
+            # append to mst list
+            min_span_tree.append(vertex)
+            # create obj
             vertex_obj = self.vert_dict[vertex]
             # looping through neighbours of vertex
             for neighbour in vertex_obj.neighbours:
                 # finding alternate distances
-                print(distance[vertex])
-                print(vertex_obj.neighbours[neighbour])
-                print(type(distance[vertex]))
-                print(type(vertex_obj.neighbours[neighbour]))
-                # Do not care about edge accumilation, do not add edge weight of neighbbour
+                # Do not care about edge accumilation, do not add edge weight
+                # of neighbbour
                 alt = distance[vertex]
                 if alt < distance[neighbour]:
                     distance[neighbour] = alt
                     previous[neighbour] = vertex
 
-        return distance, previous
+        return min_span_tree
 
     def min_weight_path(self, vertex_a: str, vertex_b: str) -> object:
         """ 
