@@ -179,8 +179,8 @@ class Graph(Vertex):
 
     def prim(self, vertex_a: str, vertex_b: str) -> object:
         """ 
-            An implementation of Primms greedy algorithm, it will return the minimum spanning tree
-            of a graph. 
+            An implementation of Primms greedy algorithm, it will return the
+            minimum spanning tree of a graph.
             Args
                 vertex_a: start vertex
                 vertex_b: end vertex
@@ -263,7 +263,7 @@ class Graph(Vertex):
             if vertex != vertex_a:
                 # make path for vertex infinity by default
                 distance[vertex] = infinity
-            vertex_obj = self.vert_dict[vertex]
+
             # enqueueing vertex with weight
             pqueue.push(vertex, distance[vertex])
 
@@ -275,15 +275,11 @@ class Graph(Vertex):
             # looping through neighbours of vertex
             for neighbour in vertex_obj.neighbours:
                 # finding alternate distances
-                print(distance[vertex])
-                print(vertex_obj.neighbours[neighbour])
-                print(type(distance[vertex]))
-                print(type(vertex_obj.neighbours[neighbour]))
-
                 alt = distance[vertex] + vertex_obj.neighbours[neighbour]
-                if alt < distance[neighbour]:
-                    distance[neighbour] = alt
-                    previous[neighbour] = vertex
+                if alt < distance[neighbour.id]:
+                    distance[neighbour.id] = alt
+                    # repush
+                    previous[neighbour.id] = vertex
 
         return distance, previous
 
