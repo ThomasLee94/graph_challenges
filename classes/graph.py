@@ -283,6 +283,21 @@ class Graph(Vertex):
 
         return distance, previous
 
+    def is_eulerian(self) -> bool:
+        """
+            This function returns a boolean of whether or not
+            it contains a Eurlerian path. A Eulerian path
+            is described as one that contains an even number
+            of degrees.
+        """
+
+        # for every vertex that exists in graph
+        for vertex in self.vert_dict:
+            # if the modulo of total neighbours is not divisible by 0
+            if len(self.get_edges(vertex)) % 2 != 0:
+                return False
+        return True
+
 
 def fill(graph: Graph, verticies: [str], edges_and_weight: [str]) -> Graph:
     """
