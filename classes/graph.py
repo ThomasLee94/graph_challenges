@@ -135,16 +135,18 @@ class Graph(Vertex):
         custom_func,
     ) -> (bool, [str]):
         """
-                Executes a depth first search on the given graph.
-                Args
-                    vertex_a: start vertex
-                    vertex_b: to vertex
-                    visited_list: keeps track of visited verticies in order of traversal
-                    visited: set method to keep track of visited verticies.
-                    custom_func: execute custom function on vertex
-                Returns
-                    If vertex_b is in any branch from vertex_a: return (True, verticies_list)
-                    If vertex_b not in any branch from vertex_a: return (False, verticies_list) 
+            Executes a depth first search on the given graph.
+            Args
+                vertex_a: start vertex
+                vertex_b: to vertex
+                visited_list: keeps track of visited verticies in order of traversal
+                visited: set method to keep track of visited verticies.
+                custom_func: execute custom function on vertex
+            Returns
+                If vertex_b is in any branch from vertex_a:
+                    return (True, verticies_list)
+                If vertex_b not in any branch from vertex_a:
+                    return (False, verticies_list)
             """
 
         # Check if verticies exists in graph
@@ -185,6 +187,7 @@ class Graph(Vertex):
                 vertex_a: start vertex
                 vertex_b: end vertex
             Returns
+                Min spanning tree.
         """
 
         # Check if verticies exists in graph
@@ -235,8 +238,8 @@ class Graph(Vertex):
 
     def min_weight_path(self, vertex_a: str, vertex_b: str) -> object:
         """ 
-            An implementation of Dijkstra greedy algorithm, it will return the shortest 
-            weighted path from vertex_a to vertex_b. 
+            An implementation of Dijkstra greedy algorithm, it will return
+            the shortest weighted path from vertex_a to vertex_b.
             Args
                 vertex_a: start vertex
                 vertex_b: end vertex
@@ -297,6 +300,35 @@ class Graph(Vertex):
             if len(self.get_edges(vertex)) % 2 != 0:
                 return False
         return True
+
+    def find_max_influencer(self) -> object:
+        """ 
+            This function finds the vertex with the highest
+            number of degrees(edges).
+
+            Returns
+                Vertex object with the highest num of 
+                degrees 
+        """
+
+        influencer_edges = 0
+        influencer = None
+        # loop through all verticies
+        for vertex in self.vert_dict:
+            # if num of verticies exceeds the previous, update
+            if len(self.get_edges(vertex)) > influencer_edges:
+                influencer_edges = len(self.get_edges(vertex))
+                influencer = vertex
+
+        return self.vert_dict[influencer]
+
+    def maximal_clique(self):
+        """
+            This function finds the maximal clique number
+            in the given graph. This is approximated using
+            Turán's theorem.
+        """
+        pass
 
 
 def fill(graph: Graph, verticies: [str], edges_and_weight: [str]) -> Graph:
