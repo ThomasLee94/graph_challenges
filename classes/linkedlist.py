@@ -1,7 +1,7 @@
 #!python
 
-class Node(object):
 
+class Node(object):
     def __init__(self, data):
         """Initialize this node with the given data."""
         self.data = data
@@ -13,7 +13,6 @@ class Node(object):
 
 
 class LinkedList(object):
-
     def __init__(self, iterable=None):
         """Initialize this linked list and append the given items, if any."""
         self.head = None  # First node
@@ -50,9 +49,9 @@ class LinkedList(object):
         # Now result contains the data from all nodes
         return result  # Constant time to return a list
 
-    def is_empty(self)->bool:
+    def is_empty(self) -> bool:
         """Return True if this linked list is empty, or False."""
-        
+
         node = self.head
         for _ in range(self.size):
             if node is None:
@@ -88,7 +87,7 @@ class LinkedList(object):
 
         # init node
         node = self.head
-        
+
         # reassign node to node.next until index is reached
         for _ in range(0, index):
             node = node.next
@@ -104,7 +103,7 @@ class LinkedList(object):
 
         # init node
         node = self.head
-        
+
         # reassign node to node.next until index is reached
         for _ in range(0, index):
             node = node.next
@@ -129,9 +128,9 @@ class LinkedList(object):
             self.append(item)
             return
         # assumption: index > 0 and index < self.size
-        else: 
+        else:
             # get node before index & at index
-            previous_node = self.get_index_node(index-1)
+            previous_node = self.get_index_node(index - 1)
             index_node = self.get_index_node(index)
             #  create node
             next_node = Node(item)
@@ -266,5 +265,4 @@ class LinkedList(object):
         else:
             # Otherwise raise an error to tell the user that delete has failed
             raise ValueError('Item not found: {}'.format(item))
-
 

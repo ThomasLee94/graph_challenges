@@ -1,8 +1,9 @@
 # !python
 
-# essential facts and functionalities of graphs 
+# essential facts and functionalities of graphs
 
 from classes.graph import Graph
+
 
 class Digraph(Graph):
     """ essential facts and functionalities of a directed graph"""
@@ -11,7 +12,7 @@ class Digraph(Graph):
         """
         add an edge between both vertex a to vertex b with a weight
         """
-        
+
         # check if vertices exist in graph
         if vertex_a not in self.vert_dict.keys():
             # raise error if vertex_a does not exist
@@ -27,10 +28,9 @@ class Digraph(Graph):
         # making vertex_b a neighbour to vertex_a by adding an edge
         vertex_a_obj.add_neighbour(vertex_b_obj, weight)
         # increment edge count
-        self.num_edges +=1 
-        
+        self.num_edges += 1
 
     def get_vertices(self):
         """return all the vertices in the graph"""
         return self.vert_dict.keys()
-    
+

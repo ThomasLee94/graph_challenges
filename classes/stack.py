@@ -6,7 +6,6 @@ from classes.linkedlist import LinkedList
 # Implement LinkedStack below, then change the assignment at the bottom
 # to use this Stack implementation to verify it passes all tests
 class LinkedStack(object):
-
     def __init__(self, iterable=None):
         """Initialize this stack and push the given items, if any."""
         # Initialize a new linked list to store the items
@@ -42,7 +41,7 @@ class LinkedStack(object):
     def peek(self):
         """Return the item on the top of this stack without removing it,
         or None if this stack is empty."""
-        
+
         # case: tail node is empty
         if self.list.is_empty():
             return None
@@ -54,7 +53,7 @@ class LinkedStack(object):
         or raise ValueError if this stack is empty."""
 
         # ! Worst & best case runtime = O(1), not dependent on length of ll
-        
+
         # case: ll length is 0
         if self.list.length() == 0:
             raise ValueError('Linked list length is 0')

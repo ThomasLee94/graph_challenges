@@ -1,7 +1,7 @@
 #!python
- 
-class Vertex(object):
 
+
+class Vertex(object):
     def __init__(self, vertex: str):
         """
         initialise a vertex and its neighbours.

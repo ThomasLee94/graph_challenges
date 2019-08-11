@@ -3,12 +3,13 @@ from classes.graph import Graph, fill
 from classes.digraph import Digraph
 import argparse
 
+
 def challenge_2(file: str, vertex_a: str, vertex_b: str) -> Graph:
     graph, verticies, edges_str = graph_from_file(file)
-    
+
     # fill graph instance with edges and verticies
     fill(graph, verticies, edges_str)
-    
+
     # getting parent dict
     dict_ = graph.breadth_first_search(vertex_a, vertex_b)
 
@@ -22,14 +23,15 @@ def challenge_2(file: str, vertex_a: str, vertex_b: str) -> Graph:
     while parent != vertex_a:
         output.append(parent)
         parent = dict_[parent]
-    
+
     # prepending vertex_a
     output.append(vertex_a)
     output = output[::-1]
-    
+
     print(f"Vertices in shortest path: {output}")
     print(f"Number of edges in shortest path: {len(output)-1}")
-    
+
+
 def cl_args() -> argparse.Namespace:
     """
         function to execute command line arguments
@@ -46,6 +48,7 @@ def cl_args() -> argparse.Namespace:
 
     return args
 
+
 if __name__ == "__main__":
     args = cl_args()
 
@@ -57,5 +60,5 @@ if __name__ == "__main__":
 
     if not args.vertex_b:
         raise Exception("End vertex was not provided!")
-    
+
     challenge_2(args.file_name, args.vertex_a, args.vertex_b)

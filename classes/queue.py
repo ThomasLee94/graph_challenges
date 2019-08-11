@@ -1,9 +1,9 @@
 #!python
 
-from classes.linkedlist import LinkedList, Node 
+from classes.linkedlist import LinkedList, Node
+
 
 class LinkedQueue(object):
-
     def __init__(self, iterable=None):
         """Initialize this queue and enqueue the given items, if any."""
         # Initialize a new linked list to store the items
@@ -20,7 +20,7 @@ class LinkedQueue(object):
         """Return True if this queue is empty, or False otherwise."""
         # is_empty() is ll class method
         return self.list.is_empty()
-    
+
     def length(self) -> int:
         """Return the number of items in this queue."""
         # length() is a ll class method
@@ -46,7 +46,7 @@ class LinkedQueue(object):
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty."""
-        
+
         # case: no nodes
         if self.list.length() < 1:
             raise ValueError("No available nodes")
