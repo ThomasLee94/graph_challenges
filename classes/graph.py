@@ -307,8 +307,8 @@ class Graph(Vertex):
             number of degrees(edges).
 
             Returns
-                Vertex object with the highest num of 
-                degrees 
+                Vertex object with the highest num of
+                degrees
         """
 
         influencer_edges = 0
@@ -322,13 +322,21 @@ class Graph(Vertex):
 
         return self.vert_dict[influencer]
 
-    def maximal_clique(self):
+    def find_lonliest_vertex(self) -> object:
         """
-            This function finds the maximal clique number
-            in the given graph. This is approximated using
-            Turán's theorem.
+            This function finds the vertex with the least 
+            amount of edges.
         """
-        pass
+        loner_edges = 0
+        loner = None
+
+        for vertex in self.vert_dict:
+            # if num of verticies exceeds the previous, update
+            if len(self.get_edges(vertex)) > loner_edges:
+                loner_edges = len(self.get_edges(vertex))
+                loner = vertex
+
+        return self.vert_dict[loner]
 
 
 def fill(graph: Graph, verticies: [str], edges_and_weight: [str]) -> Graph:
