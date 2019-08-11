@@ -14,6 +14,12 @@ def instagram_modelling(file: str, user_1: str, user_2: str) -> Graph:
     loner = graph.find_lonliest_vertex()
     message_shortest = graph.min_weight_path(user_1, user_2)
 
+    print(f"The biggest influencer is: {influencer}")
+    print(f"The biggest loner is: {loner}")
+    print(
+        f"The shortest path for a message between {user_1} & {user_2} is {message_shortest}"
+    )
+
 
 def cl_args() -> argparse.Namespace:
     """
@@ -45,9 +51,9 @@ if __name__ == "__main__":
 
     if not args.file_name:
         raise Exception("Text file was not provided!")
-    if not arge.user_1:
+    if not args.user_1:
         raise Exception("A user was not provided!")
-    if not arge.user_2:
+    if not args.user_2:
         raise Exception("A user was not provided!")
 
     instagram_modelling(args.file_name, args.user_1, args.user_2)
