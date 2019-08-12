@@ -1,9 +1,13 @@
-## Instagram followers/following modelling
+## Airline modelling
 
-Data will be modelled from a bot developed by @IkeyBenz
+I will be modelling major cities in the US, distances are not accurate. 
 
-1. Find Biggest influencer.
+I will be answering the following questions:
 
-2. Lonliest user. 
+    1. Find most connected airports.
 
-3. Time to send a message (shortest path).
+    2. Least connected airports. 
+
+    4. Can you travel to every airports from a vertex (Eurelian) 
+
+    3. Shortest path between 2 airports (shortest path).
