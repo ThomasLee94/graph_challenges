@@ -271,7 +271,7 @@ class Graph(Vertex):
             pqueue.push(vertex, distance[vertex])
 
         # while queue is not empty
-        while pqueue:
+        while len(pqueue) > 0:
             # dequeue smallest distance[vertex]
             vertex = pqueue.pop()
             vertex_obj = self.vert_dict[vertex]
