@@ -17,6 +17,7 @@ python <CHALLENGE_NUM.py> <DATA_FILE.txt> <ADDITIONAL_ARGS>
 
 ### Project
 Details on an instagram modelling of my users/followers can be found [here](PROJECT.md)
+source code for the modelling can be found [here](PROJECT.py)
 
 ## Documentation
 
