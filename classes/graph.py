@@ -327,12 +327,12 @@ class Graph(Vertex):
             This function finds the vertex with the least 
             amount of edges.
         """
-        loner_edges = 0
+        loner_edges = math.inf
         loner = None
 
         for vertex in self.vert_dict:
             # if num of verticies exceeds the previous, update
-            if len(self.get_edges(vertex)) > loner_edges:
+            if len(self.get_edges(vertex)) < loner_edges:
                 loner_edges = len(self.get_edges(vertex))
                 loner = vertex
 
@@ -343,7 +343,6 @@ def fill(graph: Graph, verticies: [str], edges_and_weight: [str]) -> Graph:
     """
         Fills graph based on input verticies and edges and optional weights 
     """
-
     # creating edge_list iterable
     edge_list = list()
     for edge in edges_and_weight:

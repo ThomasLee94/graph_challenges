@@ -10,17 +10,15 @@ def airplane_modelling(file_name: str, city_1: str, city_2: str) -> Graph:
     # fill graph instance with edges and verticies
     fill(graph, verticies, edges_str)
 
-    print(graph.vert_dict.keys())
+    most_connected_city = graph.find_max_influencer()
+    least_connected_city = graph.find_lonliest_vertex()
+    shortest_path = graph.min_weight_path(city_1, city_2)
 
-    # most_connected_city = graph.find_max_influencer()
-    # least_connected_city = graph.find_lonliest_vertex()
-    # shortest_path = graph.min_weight_path(city_1, city_2)
-
-    # print(f"The most connected city is: {most_connected_city}")
-    # print(f"The least connected city is: {least_connected_city}")
-    # print(
-    #     f"The shortest path for a message between {city_1} & {city_2} is {shortest_path}"
-    # )
+    print(f"The most connected city is: {most_connected_city.id}")
+    print(f"The least connected city is: {least_connected_city.id}")
+    print(
+        f"The shortest path for a message between {city_1} & {city_2} is {shortest_path}"
+    )
 
 
 def cl_args() -> argparse.Namespace:
