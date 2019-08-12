@@ -18,6 +18,7 @@ python <CHALLENGE_NUM.py> <DATA_FILE.txt> <ADDITIONAL_ARGS>
 ### Project
 - Details on an airline modelling of my airports can be found [here](PROJECT.md).
 - source code for the modelling can be found [here](PROJECT.py)
+- BLOG POST: https://medium.com/p/1f6cf56f152e/edit
 
 ## Documentation
 

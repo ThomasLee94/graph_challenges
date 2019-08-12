@@ -11,3 +11,5 @@ I will be answering the following questions:
     4. Can you travel to every airports from a vertex (Eurelian) 
 
     3. Shortest path between 2 airports (shortest path).
+
+BLOG POST: https://medium.com/p/1f6cf56f152e/edit
