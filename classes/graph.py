@@ -301,7 +301,7 @@ class Graph(Vertex):
                 return False
         return True
 
-    def find_max_influencer(self) -> object:
+    def most_connected_vertex(self) -> object:
         """ 
             This function finds the vertex with the highest
             number of degrees(edges).
@@ -322,7 +322,7 @@ class Graph(Vertex):
 
         return self.vert_dict[influencer]
 
-    def find_lonliest_vertex(self) -> object:
+    def least_connected_vertex(self) -> object:
         """
             This function finds the vertex with the least 
             amount of edges.

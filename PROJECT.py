@@ -10,14 +10,18 @@ def airplane_modelling(file_name: str, city_1: str, city_2: str) -> Graph:
     # fill graph instance with edges and verticies
     fill(graph, verticies, edges_str)
 
-    most_connected_city = graph.find_max_influencer()
-    least_connected_city = graph.find_lonliest_vertex()
-    shortest_path = graph.min_weight_path(city_1, city_2)
+    most_connected_city = graph.most_connected_vertex()
+    least_connected_city = graph.least_connected_vertex()
+    distance, previous = graph.min_weight_path(city_1, city_2)
+    is_eulerian = graph.is_eulerian()
 
     print(f"The most connected city is: {most_connected_city.id}")
     print(f"The least connected city is: {least_connected_city.id}")
     print(
-        f"The shortest path for a message between {city_1} & {city_2} is {shortest_path}"
+        f"Can you travel to every airport from any airport in the graph?: {is_eulerian}"
+    )
+    print(
+        f"The shortest path for a message between {city_1} & {city_2} is {distance[city_2]}"
     )
 
 
