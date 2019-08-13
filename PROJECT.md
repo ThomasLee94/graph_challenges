@@ -12,4 +12,4 @@ I will be answering the following questions:
 
     3. Shortest path between 2 airports (shortest path).
 
-BLOG POST: https://medium.com/p/1f6cf56f152e/edit
+BLOG POST: https://medium.com/@tomlee123/airline-modelling-1f6cf56f152e
